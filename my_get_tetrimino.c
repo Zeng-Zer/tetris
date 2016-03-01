@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Tue Mar  1 01:53:26 2016 David Zeng
-** Last update Tue Mar  1 04:10:11 2016 David Zeng
+** Last update Tue Mar  1 04:11:22 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -28,7 +28,7 @@ int		my_check_mino_error(t_mino *mino, int i, int debut)
       free(mino);
       return (-1);
     }
-  while (tmp[++i] != 0 && tmp[i] != ' ');
+  while (tmp[++i] != 0 && tmp[i] != ' '); /* i - debut < my_strlen(tmp) */
   tmp[i] = 0;
   if ((mino->width = my_getnbr_err(tmp)) == -1)
     return ((mino->error = 1));
