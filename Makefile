@@ -5,11 +5,13 @@
 ## Login   <zeng_d@epitech.net>
 ##
 ## Started on  Mon Oct 12 13:31:18 2015 David Zeng
-## Last update Tue Mar  1 14:28:19 2016 David Zeng
+## Last update Tue Mar  1 21:59:06 2016 David Zeng
 ##
 
 SRC	= main.c \
 	  get_tetrimino/my_get_tetrimino.c \
+	  get_tetrimino/my_pos_add.c \
+	  get_tetrimino/my_sort_add.c \
 	  list/my_add_first.c \
 	  list/my_add_list.c \
 	  list/my_declare_list.c \

@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Tue Mar  1 01:53:26 2016 David Zeng
-** Last update Tue Mar  1 16:10:49 2016 David Zeng
+** Last update Tue Mar  1 21:51:49 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -115,7 +115,7 @@ int		my_add_mino(t_list *tetrimino, struct dirent *dirent)
       free(mino);
       return (0);
     }
-  my_add_list(tetrimino, mino);
+  my_sort_add(tetrimino, mino);
   return (0);
 }
 
