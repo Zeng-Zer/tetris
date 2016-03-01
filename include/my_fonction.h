@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Mon Nov 30 15:49:28 2015 David Zeng
-** Last update Tue Mar  1 03:45:51 2016 David Zeng
+** Last update Tue Mar  1 14:25:54 2016 David Zeng
 */
 
 #include "my.h"
@@ -28,5 +28,7 @@ typedef struct		s_mino
 }			t_mino;
 
 t_list	*my_get_tetrimino();
+int	my_pos_add(t_list *list, void *data, unsigned int position);
+void	my_sort_add(t_list *list, void *data);
 
 #endif /* !MY_FONCTION_H_ */

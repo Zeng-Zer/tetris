@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Mon Dec 14 14:07:51 2015 David Zeng
-** Last update Tue Mar  1 03:18:35 2016 David Zeng
+** Last update Tue Mar  1 14:50:21 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -23,8 +23,11 @@ int		main(int argc, char **argv)
   tmp = tetrimino->debut;
   while (tmp != NULL)
     {
-      my_putstr(((t_mino*)tmp->data)->name);
-      my_putchar('\n');
+      if (((t_mino*)tmp->data)->error == 0)
+	{
+	  my_putstr(((t_mino*)tmp->data)->name);
+	  my_putchar('\n');
+	}
       tmp = tmp->next;
     }
   my_free_all(&tetrimino);
