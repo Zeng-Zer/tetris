@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Tue Mar  1 01:53:26 2016 David Zeng
-** Last update Tue Mar  1 03:34:23 2016 David Zeng
+** Last update Tue Mar  1 04:04:33 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -16,20 +16,32 @@
 #include <unistd.h>
 #include <stdio.h>
 
-int		my_check_mino_error(t_mino *mino)
+int		my_check_mino_error(t_mino *mino, int i, int debut)
 {
   int		fd;
-  char		tmp[512];
+  char		path[512];
+  char		*tmp;
 
-  my_strcpy(tmp, "tetriminos/");
-  my_strcat(tmp, mino->name);
-  if ((fd = open(tmp, O_RDONLY)) == -1)
+  if (my_strcpy(path, "tetriminos/") && my_strcat(path, mino->name) &&
+      ((fd = open(path, O_RDONLY)) == -1 || (tmp = get_next_line(fd)) == NULL))
     {
       free(mino);
-      return (1);
+      return (-1);
     }
-  close(fd);
-  return (0);
+  while (tmp[++i] != 0 && tmp[i] != ' ');
+  tmp[i] = 0;
+  if ((mino->width = my_getnbr_err(tmp)) == -1)
+    return (-1);
+  debut = i;
+  while (tmp[++i] != 0 && tmp[i] != ' ');
+  tmp[i] = 0;
+  if ((mino->height = my_getnbr_err(&tmp[debut])) == -1)
+    return (-1);
+  debut = i;
+  while (tmp[++i] != 0 && tmp[i] != ' ');
+  if (tmp[i] != 0 || (mino->color = my_getnbr_err(&tmp[debut])) == -1)
+    return (-1);
+  return (close(fd));
 }
 
 int		my_get_mino_name(char *str)
@@ -54,7 +66,7 @@ int		my_add_mino(t_list *tetrimino, struct dirent *dirent)
   mino->color = 0;
   mino->error = 0;
   my_strcpy(mino->name, dirent->d_name);
-  if (my_check_mino_error(mino) == 1)
+  if (my_check_mino_error(mino, -1, 0) == -1)
     return (1);
   if (my_get_mino_name(mino->name) == 1)
     {

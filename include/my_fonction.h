@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Mon Nov 30 15:49:28 2015 David Zeng
-** Last update Tue Mar  1 02:30:08 2016 David Zeng
+** Last update Tue Mar  1 03:45:51 2016 David Zeng
 */
 
 #include "my.h"
@@ -23,6 +23,7 @@ typedef struct		s_mino
   int			height;
   int			color;
   int			error;
+  char			**shape;
   char			name[256];
 }			t_mino;
 
