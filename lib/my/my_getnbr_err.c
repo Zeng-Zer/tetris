@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Mon Nov  2 22:12:18 2015 David Zeng
-** Last update Sat Dec 19 16:25:51 2015 David Zeng
+** Last update Tue Mar  1 02:28:19 2016 David Zeng
 */
 
 #include <unistd.h>
@@ -29,10 +29,7 @@ int	my_getnbr_err(char *str)
   while (str[i] != '\0')
     {
       if (str[i] < '0' || str[i] > '9')
-	{
-	  write(2, "Wrong number\n", my_strlen("Wrong number\n"));
-	  exit(-1);
-	}
+	return (-1);
       nb = (nb + (str[i] - '0')) * 10;
       i = i + 1;
     }

@@ -5,12 +5,20 @@
 ## Login   <zeng_d@epitech.net>
 ##
 ## Started on  Mon Oct 12 13:31:18 2015 David Zeng
-## Last update Mon Feb 29 17:01:43 2016 David Zeng
+## Last update Tue Mar  1 02:57:52 2016 David Zeng
 ##
 
 SRC	= main.c \
+	  my_get_tetrimino.c \
+	  list/my_add_first.c \
+	  list/my_add_list.c \
+	  list/my_declare_list.c \
+	  list/my_del_node.c \
+	  list/my_free_all.c \
+	  list/my_free_list.c \
+	  list/my_show_list.c \
 
-NAME	= tetris
+NAME	= a.out
 
 LIB	= libmy.a
 
@@ -18,7 +26,7 @@ CC	= gcc
 
 OBJ	= $(SRC:.c=.o)
 
-CFLAGS	=  -L./lib -lmy -I./include/ -g -W -Werror -Wall
+CFLAGS	=  -L./lib -lmy -I./include/ -g -W -Werror -Wall -lncurses
 
 PATHS	= ./lib/my/
 
