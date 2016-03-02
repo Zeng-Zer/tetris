@@ -5,13 +5,13 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Tue Jan  5 03:02:32 2016 David Zeng
-** Last update Tue Jan  5 03:13:58 2016 David Zeng
+** Last update Wed Mar  2 01:33:25 2016 David Zeng
 */
 
 #include <stdlib.h>
 #include "my_list.h"
 
-void		my_free_all(t_list **list)
+void		my_free_all(t_list **list, void (*ptr)())
 {
   t_node	*tmp;
   t_node	*node;
@@ -21,7 +21,7 @@ void		my_free_all(t_list **list)
     {
       tmp = node;
       node = node->next;
-      free(tmp->data);
+      ptr(tmp->data);
       free(tmp);
     }
   free(*list);

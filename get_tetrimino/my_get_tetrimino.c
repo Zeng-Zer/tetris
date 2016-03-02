@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Tue Mar  1 01:53:26 2016 David Zeng
-** Last update Tue Mar  1 21:51:49 2016 David Zeng
+** Last update Wed Mar  2 01:37:17 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -16,7 +16,7 @@
 #include <unistd.h>
 #include <stdio.h>
 
-int		my_get_mino_name(char *str, int opt)
+int		my_get_mino_name(char *str, int opt, t_mino *mino)
 {
   int		length;
 
@@ -28,6 +28,8 @@ int		my_get_mino_name(char *str, int opt)
       str[length - 10] = 0;
       return (0);
     }
+  if (my_get_mino_shape(mino, str) == 1)
+    return (1);
   while (str[opt] != 0)
     {
       if (str[opt] != ' ' && str[opt] != '*')
@@ -46,12 +48,12 @@ void		my_check_mino_shape(t_mino *mino, int *size, int fd, int len)
   i = -1;
   while ((tmp = get_next_line(fd)) != NULL)
     {
-      if (mino->error != 1)
+      if (mino->error != 1 && (mino->width = size[0]))
 	{
 	  j = 0;
 	  if (++i >= (mino->height = size[1]))
 	    mino->error = 1;
-	  if (my_get_mino_name(tmp, 0) == 1)
+	  if (my_get_mino_name(tmp, 0, mino) == 1)
 	    mino->error = 1;
 	  while (tmp[my_strlen(tmp) - ++j] == ' ' && j + 1 < my_strlen(tmp));
 	  tmp[my_strlen(tmp) - (j - 1)] = 0;
@@ -62,7 +64,7 @@ void		my_check_mino_shape(t_mino *mino, int *size, int fd, int len)
 	}
       free(tmp);
     }
-  if (mino->error != 1 && len != (mino->width = size[0]))
+  if (mino->error != 1 && len != mino->width)
     mino->error = 1;
 }
 
@@ -83,7 +85,8 @@ int		my_check_mino_error(t_mino *mino, int i, int debut, int j)
       if ((tmp[i] == ' ' && j < 2) || (tmp[i] == '\0' && j == 1))
 	{
 	  tmp[i] = 0;
-	  size[++j] = my_getnbr_err(&tmp[debut]);
+	  if ((size[++j] = my_getnbr_err(&tmp[debut])) == 0)
+	    mino->error = 1;
 	  debut = i + 1;
 	}
       else if (tmp[i] == '\0' && j != 1)
@@ -104,14 +107,17 @@ int		my_add_mino(t_list *tetrimino, struct dirent *dirent)
   mino->height = 0;
   mino->color = 0;
   mino->error = 0;
+  mino->shape = NULL;
   my_strcpy(mino->name, dirent->d_name);
   if (my_check_mino_error(mino, -1, 0, -1) == -1)
     {
+      free(mino->shape);
       free(mino);
       return (1);
     }
-  if (my_get_mino_name(mino->name, 1) == 1)
+  if (my_get_mino_name(mino->name, 1, NULL) == 1)
     {
+      free(mino->shape);
       free(mino);
       return (0);
     }
@@ -137,7 +143,7 @@ t_list		*my_get_tetrimino()
 	{
 	  if (my_add_mino(tetrimino, dirent) == 1)
 	    {
-	      my_free_all(&tetrimino);
+	      my_free_all(&tetrimino, &my_free_node_data);
 	      return (NULL);
 	    }
 	}
