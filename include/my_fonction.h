@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Mon Nov 30 15:49:28 2015 David Zeng
-** Last update Wed Mar  2 01:37:01 2016 David Zeng
+** Last update Wed Mar  2 01:41:54 2016 David Zeng
 */
 
 #include "my.h"
@@ -55,7 +55,9 @@ t_setup			*my_get_setup(char **argv);
 /* PARSING END */
 
 
+/* OTHER */
 void			my_free_node_data(t_mino *mino);
 void			my_aff_help();
+/* OTHER END */
 
 #endif /* !MY_FONCTION_H_ */
