@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Tue Mar  1 01:53:26 2016 David Zeng
-** Last update Wed Mar  2 01:45:51 2016 David Zeng
+** Last update Fri Mar  4 23:18:46 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -64,7 +64,7 @@ void		my_check_mino_shape(t_mino *mino, int *size, int fd, int len)
 	}
       free(tmp);
     }
-  if (mino->error != 1 && len != mino->width)
+  if (mino->error != 1 && (len != mino->width || (mino->color = size[2]) <= 0))
     mino->error = 1;
 }
 

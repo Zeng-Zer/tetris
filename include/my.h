@@ -5,14 +5,13 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Thu Oct  8 14:34:15 2015 David Zeng
-** Last update Mon Feb 29 16:47:30 2016 David Zeng
+** Last update Thu Mar  3 22:45:19 2016 David Zeng
 */
 
 #include <stdarg.h>
 
 #ifndef MY_H_
 # define MY_H_
-
 
 /* MY_H */
 

@@ -5,7 +5,7 @@
 ## Login   <zeng_d@epitech.net>
 ##
 ## Started on  Mon Oct 12 13:31:18 2015 David Zeng
-## Last update Wed Mar  2 00:43:44 2016 David Zeng
+## Last update Fri Mar  4 18:47:04 2016 David Zeng
 ##
 
 SRC	= main.c \
@@ -13,7 +13,12 @@ SRC	= main.c \
 	  get_tetrimino/my_pos_add.c \
 	  get_tetrimino/my_sort_add.c \
 	  get_tetrimino/my_get_mino_shape.c \
-	  my_aff_help.c \
+	  misc/my_aff_help.c \
+	  misc/my_aff_debug.c \
+	  misc/my_aff_tetrimino.c \
+	  parser/parsing.c \
+	  parser/my_get_param.c \
+	  parser/my_get_keyboard.c \
 	  list/my_add_first.c \
 	  list/my_add_list.c \
 	  list/my_declare_list.c \

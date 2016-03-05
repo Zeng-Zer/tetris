@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Mon Dec 14 14:07:51 2015 David Zeng
-** Last update Wed Mar  2 01:34:57 2016 David Zeng
+** Last update Fri Mar  4 23:24:37 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -20,26 +20,14 @@ void		my_free_node_data(t_mino *mino)
 int		main(int argc, char **argv)
 {
   t_list	*tetrimino;
-  t_node	*tmp;
+  t_setup	*setup;
 
-  if (argc == 2)
-    {
-      my_aff_help();
-      return (0);
-    }
-  (void)argv;
-  if ((tetrimino = my_get_tetrimino()) == NULL)
+  if ((setup = my_get_setup(argc, argv)) == NULL ||
+      (tetrimino = my_get_tetrimino()) == NULL)
     return (1);
-  tmp = tetrimino->debut;
-  while (tmp != NULL)
-    {
-      if (((t_mino*)tmp->data)->error == 0)
-	{
-	  my_putstr(((t_mino*)tmp->data)->name);
-	  my_printf(", %s\n", ((t_mino*)tmp->data)->shape);
-	}
-      tmp = tmp->next;
-    }
+  if (setup->debug == true)
+    my_aff_debug(setup, tetrimino);
+  free(setup);
   my_free_all(&tetrimino, &my_free_node_data);
   return (0);
 }
