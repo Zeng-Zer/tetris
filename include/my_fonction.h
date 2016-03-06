@@ -69,7 +69,7 @@ int			my_get_keyboard(int argc, char **argv, t_setup *new);
 
 /* OTHER */
 void			my_free_node_data(t_mino *mino);
-void			my_aff_help();
+void			my_aff_help(char *str);
 void			my_aff_tetrimino(t_list *tetrimino);
 void			my_aff_debug(t_setup *setup, t_list *tetrimino);
 /* OTHER END */

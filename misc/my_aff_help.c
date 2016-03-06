@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Tue Mar  1 22:19:24 2016 David Zeng
-** Last update Fri Mar  4 03:03:58 2016 David Zeng
+** Last update Sun Mar  6 23:02:19 2016 Jean PLANCHER
 */
 
 #include "my_fonction.h"
@@ -13,7 +13,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-void		my_aff_help()
+void		my_aff_help(char *str)
 {
   int		fd;
   int		ret;
@@ -24,6 +24,6 @@ void		my_aff_help()
   if ((ret = read(fd, buffer, 1024)) == -1)
     return;
   buffer[ret] = 0;
-  my_printf("%s\n", buffer);
+  my_printf("Usage: %s [options]\n%s\n", str, buffer);
   close(fd);
 }

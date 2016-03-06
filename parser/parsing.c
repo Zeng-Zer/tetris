@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Tue Mar  1 22:30:32 2016 David Zeng
-** Last update Fri Mar  4 18:11:02 2016 David Zeng
+** Last update Sun Mar  6 23:00:09 2016 Jean PLANCHER
 */
 
 #include "my_fonction.h"
@@ -92,7 +92,7 @@ t_setup		*my_get_setup(int ac, char **av)
     {
       if (my_strcmp(av[i], "--help") == 0)
 	{
-	  my_aff_help();
+	  my_aff_help(av[0]);
 	  free(new);
 	  return (NULL);
 	}
