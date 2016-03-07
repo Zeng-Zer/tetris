@@ -5,7 +5,7 @@
 ## Login   <zeng_d@epitech.net>
 ##
 ## Started on  Mon Oct 12 13:31:18 2015 David Zeng
-## Last update Fri Mar  4 18:47:04 2016 David Zeng
+## Last update Mon Mar  7 05:43:11 2016 David
 ##
 
 SRC	= main.c \
@@ -27,7 +27,7 @@ SRC	= main.c \
 	  list/my_free_list.c \
 	  list/my_show_list.c \
 
-NAME	= a.out
+NAME	= tetris
 
 LIB	= libmy.a
 
