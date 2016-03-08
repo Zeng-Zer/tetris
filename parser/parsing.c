@@ -5,7 +5,7 @@
 ** Login   <David@epitech.net>
 **
 ** Started on  Tue Mar  8 18:05:15 2016 David Zeng
-** Last update Tue Mar  8 19:19:30 2016 Jean PLANCHER
+** Last update Tue Mar  8 19:19:37 2016 Jean PLANCHER
 */
 
 #include "my_fonction.h"
@@ -31,12 +31,14 @@ t_setup		*my_init_setup()
   if ((new = malloc(sizeof(t_setup))) == NULL)
     return (NULL);
   new->level = 1;
+  /*
   if (my_gcap(new->left, "kcub1") == 1 || my_gcap(new->right, "kcuf1") == 1 ||
       my_gcap(new->turn, "kcuu1") == 1 || my_gcap(new->drop, "kcud1") == 1)
     {
       free(new);
       return (NULL);
     }
+  */
   new->quit[0] = 27;
   new->quit[1] = 0;
   my_strcpy(new->pause, " ");
