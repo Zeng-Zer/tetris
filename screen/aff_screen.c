@@ -5,7 +5,7 @@
 ** Login   <planch_j@epitech.net>
 **
 ** Started on  Tue Mar  8 16:08:40 2016 Jean PLANCHER
-** Last update Tue Mar  8 18:01:17 2016 Jean PLANCHER
+** Last update Tue Mar  8 18:08:03 2016 Jean PLANCHER
 */
 
 #include <ncurses/curses.h>
