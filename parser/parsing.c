@@ -5,7 +5,7 @@
 ** Login   <David@epitech.net>
 **
 ** Started on  Tue Mar  8 18:05:15 2016 David Zeng
-** Last update Tue Mar  8 19:00:03 2016 Jean PLANCHER
+** Last update Tue Mar  8 19:49:00 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -24,12 +24,13 @@ int		my_gcap(char *key, char *cap)
   return (0);
 }
 
-t_setup		*my_init_setup()
+t_setup		*my_init_setup(char **env)
 {
   t_setup	*new;
 
   if ((new = malloc(sizeof(t_setup))) == NULL)
     return (NULL);
+  my_init_term(env, 0);
   new->level = 1;
   if (my_gcap(new->left, "kcub1") == 1 || my_gcap(new->right, "kcuf1") == 1 ||
       my_gcap(new->turn, "kcuu1") == 1 || my_gcap(new->drop, "kcud1") == 1)
@@ -95,12 +96,12 @@ int		my_get_other_setup(int argc, char **argv, t_setup *new)
   return (0);
 }
 
-t_setup		*my_get_setup(int ac, char **av)
+t_setup		*my_get_setup(int ac, char **av, char **env)
 {
   t_setup	*new;
   int		i;
 
-  if ((new = my_init_setup()) == NULL)
+  if ((new = my_init_setup(env)) == NULL)
     return (NULL);
   if (av == NULL)
     return (new);

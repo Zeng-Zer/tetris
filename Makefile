@@ -5,7 +5,7 @@
 ## Login   <zeng_d@epitech.net>
 ##
 ## Started on  Mon Oct 12 13:31:18 2015 David Zeng
-## Last update Tue Mar  8 18:04:22 2016 David Zeng
+## Last update Tue Mar  8 19:50:10 2016 David Zeng
 ##
 
 SRC	= main.c \
@@ -19,6 +19,8 @@ SRC	= main.c \
 	  parser/parsing.c \
 	  parser/my_get_param.c \
 	  parser/my_get_keyboard.c \
+	  parser/my_init_term.c \
+	  parser/my_get_env.c \
 	  list/my_add_first.c \
 	  list/my_add_list.c \
 	  list/my_declare_list.c \

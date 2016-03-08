@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Fri Mar  4 17:59:59 2016 David Zeng
-** Last update Tue Mar  8 18:04:39 2016 David Zeng
+** Last update Tue Mar  8 19:51:04 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -58,5 +58,6 @@ int		my_get_keyboard(int argc, char **argv, t_setup *new)
   my_get_key_with_ref(argc, argv, &ref, new->quit);
   my_get_keypause(argc, argv, new);
   my_printf("%s right", new->right);
+  sleep(1);
   return (0);
 }

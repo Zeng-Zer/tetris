@@ -5,14 +5,16 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Mon Nov 30 15:49:28 2015 David Zeng
-** Last update Tue Mar  8 14:37:12 2016 David
+** Last update Tue Mar  8 19:49:32 2016 David Zeng
 */
 
 #ifndef MY_FONCTION_H_
 # define MY_FONCTION_H_
 
 # include <ncurses/curses.h>
+# include <term.h>
 # include <sys/ioctl.h>
+# include <termios.h>
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -64,10 +66,12 @@ typedef struct		s_ref
   char			ref2[16];
 }			t_ref;
 
-t_setup			*my_get_setup(int argc, char **argv);
+t_setup			*my_get_setup(int argc, char **argv, char **env);
+int			my_init_term(char **env, int mode);
 char			*my_get_param(int argc, char **argv, char *ref);
 char			*my_get_long_param(int argc, char **argv, char *ref);
 int			my_get_keyboard(int argc, char **argv, t_setup *new);
+char			*my_get_env(char **env, char *elem);
 /* PARSING END */
 
 /* OTHER */

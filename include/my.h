@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Thu Oct  8 14:34:15 2015 David Zeng
-** Last update Thu Mar  3 22:45:19 2016 David Zeng
+** Last update Tue Mar  8 19:46:34 2016 David Zeng
 */
 
 #ifndef MY_H_
@@ -35,11 +35,11 @@ char	*my_strcat(char *dest, char *src);
 char	*my_strncat(char *dest, char *src, int nb);
 int	my_putnbr_base(int nbr, char *base);
 char	*my_strdup(char *src);
-void	my_show_tab(char **tab);
-void	my_free_tab(char **tab);
+void	my_show_tab(char **tabi);
+void	my_free_tab(char **tabi);
 void	my_put_err(char *str);
 char	*my_strndup(char *str, int nb);
-int	my_tablen(char **tab);
+int	my_tablen(char **tabi);
 char	*get_next_line(const int fd);
 char	*my_realloc(char *pointer, unsigned int size);
 unsigned int	my_getnbr_base(char *str, char *base);
@@ -76,7 +76,7 @@ typedef int	(*t_cass)(va_list, char*);
 
 void	my_sputchar(char *buffer, char c);
 void	my_sputstr(char *buffer, char *str);
-void	my_sshow_tab(char *buffer, char **tab);
+void	my_sshow_tab(char *buffer, char **tabi);
 void	my_sput_nbr(char *buffer, int nb);
 int	disp_sprintf(const char *str, int *i, va_list list, char *buffer);
 int	my_sprinti(va_list list, char *buffer);
