@@ -5,18 +5,20 @@
 ** Login   <planch_j@epitech.net>
 **
 ** Started on  Tue Mar  8 16:08:40 2016 Jean PLANCHER
-** Last update Tue Mar  8 18:45:44 2016 Jean PLANCHER
+** Last update Tue Mar  8 19:00:15 2016 Jean PLANCHER
 */
 
 #include "my_fonction.h"
 #include "screen.h"
 
-int	get_input(char *touch)
+int	get_input(t_setup *setup, char *touch)
 {
   int	ret;
 
   ret = read(0, touch, 100);
   touch[ret] = 0;
+  if (!my_strcmp(touch, setup->quit))
+    return (0);
   return (1);
 }
 
@@ -45,6 +47,6 @@ void		aff_screen(t_list *tetrimino, t_setup *setup)
   printw("Press ESC to exit");
   refresh();
   my_win = create_newwin(HEIGHT, WIDTH, STARTX, STARTY);
-  while (get_input(touch));
+  while (get_input(setup, touch));
   endwin();
 }

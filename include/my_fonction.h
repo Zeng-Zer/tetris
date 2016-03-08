@@ -12,7 +12,9 @@
 # define MY_FONCTION_H_
 
 # include <ncurses/curses.h>
+# include <sys/ioctl.h>
 # include <unistd.h>
+# include <stdio.h>
 # include <stdlib.h>
 # include "my_list.h"
 # include "my.h"
