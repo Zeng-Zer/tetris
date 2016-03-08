@@ -1,11 +1,11 @@
 /*
-** parsing.c for tetris in /home/zeng_d
+** parsing.c for tetris in /home/zeng_d/rendu/Unix/PSU_2015_tetris
 **
 ** Made by David Zeng
-** Login   <zeng_d@epitech.net>
+** Login   <David@epitech.net>
 **
-** Started on  Tue Mar  1 22:30:32 2016 David Zeng
-** Last update Tue Mar  8 16:01:57 2016 
+** Started on  Tue Mar  8 18:05:15 2016 David Zeng
+** Last update Tue Mar  8 18:08:39 2016 David Zeng
 */
 
 #include "my_fonction.h"

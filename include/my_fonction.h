@@ -74,4 +74,8 @@ void			my_aff_tetrimino(t_list *tetrimino);
 void			my_aff_debug(t_setup *setup, t_list *tetrimino);
 /* OTHER END */
 
+/* SCREEN */
+void	aff_screen(t_list *tetrimino, t_setup *setup);
+/* SCREEN END */
+
 #endif /* !MY_FONCTION_H_ */

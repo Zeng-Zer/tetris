@@ -1,11 +1,11 @@
 /*
-** main.c for main in /home/zeng_d/usefull
+** main.c for tetris in /home/zeng_d/rendu/Unix/PSU_2015_tetris
 **
 ** Made by David Zeng
-** Login   <zeng_d@epitech.net>
+** Login   <David@epitech.net>
 **
-** Started on  Mon Dec 14 14:07:51 2015 David Zeng
-** Last update Tue Mar  8 17:59:15 2016 David Zeng
+** Started on  Tue Mar  8 18:03:47 2016 David Zeng
+** Last update Tue Mar  8 18:03:50 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -45,6 +45,7 @@ int		main(int argc, char **argv)
   if (setup->debug == true)
     my_aff_debug(setup, tetrimino);
   my_remove_error_mino(tetrimino);
+  aff_screen(tetrimino, setup);
   free(setup);
   my_free_all(&tetrimino, &my_free_node_data);
   return (0);
