@@ -21,6 +21,10 @@
 # include "my_list.h"
 # include "my.h"
 
+# ifndef SIZE_READ
+#  define SIZE_READ (100)
+# endif /* !SIZE_READ */
+
 typedef struct		s_pos
 {
   int			x;
@@ -48,12 +52,12 @@ int			my_get_mino_shape(t_mino *mino, char *str);
 typedef struct		s_setup
 {
   int			level;
-  char			left[100];
-  char			right[100];
-  char			turn[100];
-  char			drop[100];
-  char			quit[100];
-  char			pause[100];
+  char			left[SIZE_READ];
+  char			right[SIZE_READ];
+  char			turn[SIZE_READ];
+  char			drop[SIZE_READ];
+  char			quit[SIZE_READ];
+  char			pause[SIZE_READ];
   int			width;
   int			height;
   int			next;
