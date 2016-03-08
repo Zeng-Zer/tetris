@@ -8,10 +8,10 @@
 ** Last update Thu Mar  3 22:45:19 2016 David Zeng
 */
 
-#include <stdarg.h>
-
 #ifndef MY_H_
 # define MY_H_
+
+# include <stdarg.h>
 
 /* MY_H */
 

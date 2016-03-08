@@ -5,16 +5,19 @@
 ** Login   <planch_j@epitech.net>
 **
 ** Started on  Tue Mar  8 16:08:40 2016 Jean PLANCHER
-** Last update Tue Mar  8 18:08:03 2016 Jean PLANCHER
+** Last update Tue Mar  8 18:45:44 2016 Jean PLANCHER
 */
 
-#include <ncurses/curses.h>
 #include "my_fonction.h"
 #include "screen.h"
 
-char	*get_input()
+int	get_input(char *touch)
 {
-  return ("test");
+  int	ret;
+
+  ret = read(0, touch, 100);
+  touch[ret] = 0;
+  return (1);
 }
 
 static WINDOW *create_newwin(int height, int width, int starty, int startx)
@@ -31,7 +34,7 @@ static WINDOW *create_newwin(int height, int width, int starty, int startx)
 void		aff_screen(t_list *tetrimino, t_setup *setup)
 {
   WINDOW	*my_win;
-  char		*touch;
+  char		touch[100];
 
   (void)tetrimino;
   (void)setup;
@@ -42,6 +45,6 @@ void		aff_screen(t_list *tetrimino, t_setup *setup)
   printw("Press ESC to exit");
   refresh();
   my_win = create_newwin(HEIGHT, WIDTH, STARTX, STARTY);
-  while (my_strcmp((touch = get_input()), setup->quit));
+  while (get_input(touch));
   endwin();
 }

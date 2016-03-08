@@ -8,13 +8,14 @@
 ** Last update Tue Mar  8 14:37:12 2016 David
 */
 
-#include "my.h"
-#include "my_list.h"
-#include <stdlib.h>
-#include <ncurses/curses.h>
-
 #ifndef MY_FONCTION_H_
 # define MY_FONCTION_H_
+
+# include <ncurses/curses.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include "my_list.h"
+# include "my.h"
 
 typedef struct		s_pos
 {
