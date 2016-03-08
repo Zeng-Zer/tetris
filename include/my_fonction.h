@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Mon Nov 30 15:49:28 2015 David Zeng
-** Last update Fri Mar  4 18:45:44 2016 David Zeng
+** Last update Tue Mar  8 14:37:12 2016 David
 */
 
 #include "my.h"
@@ -43,12 +43,12 @@ int			my_get_mino_shape(t_mino *mino, char *str);
 typedef struct		s_setup
 {
   int			level;
-  int			left;
-  int			right;
-  int			turn;
-  int			drop;
-  int			quit;
-  int			pause;
+  char			left[100];
+  char			right[100];
+  char			turn[100];
+  char			drop[100];
+  char			quit[100];
+  char			pause[100];
   int			width;
   int			height;
   int			next;

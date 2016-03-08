@@ -5,10 +5,24 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Tue Mar  1 22:30:32 2016 David Zeng
-** Last update Sun Mar  6 23:00:09 2016 Jean PLANCHER
+** Last update Tue Mar  8 15:20:21 2016 David
 */
 
 #include "my_fonction.h"
+#include <stdio.h>
+
+int		my_gcap(char *key, char *cap)
+{
+  char		*tmp;
+
+  if ((tmp = tigetstr(cap)) == NULL)
+    {
+      my_printf("Your terminal doesn't support %s capacity\nExiting...\n", cap);
+      return (1);
+    }
+  my_strcpy(key, tmp);
+  return (0);
+}
 
 t_setup		*my_init_setup()
 {
@@ -17,12 +31,15 @@ t_setup		*my_init_setup()
   if ((new = malloc(sizeof(t_setup))) == NULL)
     return (NULL);
   new->level = 1;
-  new->left = KEY_LEFT;
-  new->right = KEY_RIGHT;
-  new->turn = KEY_UP;
-  new->drop = KEY_DOWN;
-  new->quit = 27;
-  new->pause = ' ';
+  if (my_gcap(new->left, "kcub1") == 1 || my_gcap(new->right, "kcuf1") == 1 ||
+      my_gcap(new->turn, "kcuu1") == 1 || my_gcap(new->drop, "kcud1") == 1)
+    {
+      free(new);
+      return (NULL);
+    }
+  new->quit[0] = 27;
+  new->quit[1] = 0;
+  my_strcpy(new->pause, " ");
   new->width = 10;
   new->height = 20;
   new->next = true;
