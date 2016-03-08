@@ -5,11 +5,11 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Mon Dec 14 14:07:51 2015 David Zeng
-** Last update Fri Mar  4 23:24:37 2016 David Zeng
+** Last update Tue Mar  8 16:39:33 2016 Jean PLANCHER
 */
 
-#include "my_fonction.h"
 #include <ncurses/curses.h>
+#include "my_fonction.h"
 
 void		my_free_node_data(t_mino *mino)
 {
@@ -27,6 +27,7 @@ int		main(int argc, char **argv)
     return (1);
   if (setup->debug == true)
     my_aff_debug(setup, tetrimino);
+  aff_screen(tetrimino, setup);
   free(setup);
   my_free_all(&tetrimino, &my_free_node_data);
   return (0);
