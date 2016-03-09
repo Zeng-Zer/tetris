@@ -5,7 +5,7 @@
 ** Login   <David@epitech.net>
 **
 ** Started on  Tue Mar  8 18:03:47 2016 David Zeng
-** Last update Tue Mar  8 23:36:36 2016 
+** Last update Wed Mar  9 01:00:36 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -28,6 +28,7 @@ void		my_remove_error_mino(t_list *tetrimino)
       node = node->next;
       if (((t_mino *)tmp->data)->error == 1)
 	{
+	  free(((t_mino *)tmp->data)->shape);
 	  free(tmp->data);
 	  my_del_node(tetrimino, tmp);
 	}

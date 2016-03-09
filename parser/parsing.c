@@ -5,11 +5,10 @@
 ** Login   <David@epitech.net>
 **
 ** Started on  Tue Mar  8 18:05:15 2016 David Zeng
-** Last update Tue Mar  8 23:35:32 2016 
+** Last update Wed Mar  9 00:12:16 2016 David Zeng
 */
 
 #include "my_fonction.h"
-#include <stdio.h>
 
 int		my_gcap(char *key, char *cap)
 {
@@ -30,14 +29,14 @@ t_setup		*my_init_setup(char **env)
 
   if ((new = malloc(sizeof(t_setup))) == NULL)
     return (NULL);
-  my_init_term(env, 0);
-  new->level = 1;
-  if (my_gcap(new->left, "kcub1") == 1 || my_gcap(new->right, "kcuf1") == 1 ||
-      my_gcap(new->turn, "kcuu1") == 1 || my_gcap(new->drop, "kcud1") == 1)
+  if (my_init_term(env, 0) == 1 || my_gcap(new->right, "kcuf1") == 1 ||
+      my_gcap(new->turn, "kcuu1") == 1 || my_gcap(new->drop, "kcud1") == 1 ||
+      my_gcap(new->left, "kcub1") == 1)
     {
       free(new);
       return (NULL);
     }
+  new->level = 1;
   new->quit[0] = 27;
   new->quit[1] = 0;
   my_strcpy(new->pause, " ");
