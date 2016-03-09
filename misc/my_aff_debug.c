@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Fri Mar  4 18:27:53 2016 David Zeng
-** Last update Wed Mar  9 01:30:10 2016 David Zeng
+** Last update Wed Mar  9 01:41:49 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -23,5 +23,4 @@ void		my_aff_debug(t_setup *setup, t_list *tetrimino)
   my_aff_tetrimino(tetrimino);
   my_printf("Press a key to start Tetris\n");
   read(0, NULL, 1);
-  my_init_term(NULL, 1);
 }
