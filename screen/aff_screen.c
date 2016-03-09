@@ -5,7 +5,7 @@
 ** Login   <planch_j@epitech.net>
 **
 ** Started on  Tue Mar  8 16:08:40 2016 Jean PLANCHER
-** Last update Tue Mar  8 23:30:13 2016 Jean PLANCHER
+** Last update Wed Mar  9 01:24:22 2016 Jean PLANCHER
 */
 
 #include "screen.h"
@@ -32,9 +32,15 @@ static int	get_input(t_setup *setup)
   return (1);
 }
 
-static WINDOW *create_newwin(int width, int height, int startx, int starty)
+void	destroy_win(t_screen *win)
 {
-  WINDOW *local_win;
+  delwin(win->game);
+  delwin(win->score);
+}
+
+static WINDOW	*create_newwin(int width, int height, int startx, int starty)
+{
+  WINDOW	*local_win;
 
   local_win = newwin(height, width, starty, startx);
   box(local_win, 0 , 0);
@@ -54,11 +60,12 @@ void		aff_screen(t_list *tetrimino, t_setup *setup)
   keypad(stdscr, TRUE);
   printw("Press ESC to exit");
   refresh();
-  win.game = create_newwin(GWIDTH, GHEIGHT, STARTX, STARTY);
-  win.score = create_newwin(10, 20, 0, 10);
+  win.game = create_newwin(GWIDTH, GHEIGHT, STARTX, STARTY + 5);
+  win.score = create_newwin(10, 20, STARTX - 30, STARTY);
   wprintw(win.score, "High Score 100");
   refresh();
-  while (get_input(setup));
+  while (get_input(setup))
     refresh();
+  //destroy_win(&win);
   endwin();
 }
