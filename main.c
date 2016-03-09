@@ -5,7 +5,7 @@
 ** Login   <David@epitech.net>
 **
 ** Started on  Tue Mar  8 18:03:47 2016 David Zeng
-** Last update Wed Mar  9 01:34:46 2016 Jean PLANCHER
+** Last update Wed Mar  9 01:41:00 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -45,6 +45,7 @@ int		main(int argc, char **argv, char **env)
     return (1);
   if (setup->debug == true)
     my_aff_debug(setup, tetrimino);
+  my_init_term(NULL, 1);
   my_remove_error_mino(tetrimino);
   aff_screen(tetrimino, setup);
   free(setup);
