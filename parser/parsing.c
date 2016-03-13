@@ -5,7 +5,7 @@
 ** Login   <David@epitech.net>
 **
 ** Started on  Tue Mar  8 18:05:15 2016 David Zeng
-** Last update Wed Mar  9 01:08:40 2016 David Zeng
+** Last update Sun Mar 13 22:17:12 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -37,8 +37,7 @@ t_setup		*my_init_setup(char **env)
       return (NULL);
     }
   new->level = 1;
-  new->quit[0] = 27;
-  new->quit[1] = 0;
+  my_strcpy(new->quit, "q");
   my_strcpy(new->pause, " ");
   new->width = 10;
   new->height = 20;
