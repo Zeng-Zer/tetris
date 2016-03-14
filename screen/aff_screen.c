@@ -5,7 +5,7 @@
 ** Login   <planch_j@epitech.net>
 **
 ** Started on  Tue Mar  8 16:08:40 2016 Jean PLANCHER
-** Last update Wed Mar  9 01:48:40 2016 Jean PLANCHER
+** Last update Mon Mar 14 22:20:01 2016 Jean PLANCHER
 */
 
 #include "screen.h"
@@ -20,24 +20,40 @@ static int	get_input(t_setup *setup)
   if (!my_strcmp(touch, setup->quit))
     return (0);
   else if (!my_strcmp(touch, setup->left))
-    printw("left : [%s]", setup->left);
+    mvprintw(STARTY + 20, STARTX * 2 - 10, "left : [%s]   ", setup->left);
   else if (!my_strcmp(touch, setup->right))
-    printw("right : [%s]", setup->right);
+    mvprintw(STARTY + 20, STARTX * 2 - 10, "right : [%s]   ", setup->right);
   else if (!my_strcmp(touch, setup->turn))
-    printw("turn : [%s]", setup->turn);
+    mvprintw(STARTY + 20, STARTX * 2 - 10, "turn : [%s]   ", setup->turn);
   else if (!my_strcmp(touch, setup->drop))
-    printw("drop : [%s]", setup->drop);
+    mvprintw(STARTY + 20, STARTX * 2 - 10, "drop : [%s]   ", setup->drop);
   else if (!my_strcmp(touch, setup->pause))
-    printw("pause : [%s]", setup->pause);
+    mvprintw(STARTY + 20, STARTX * 2 - 10, "pause : [%s]   ", setup->pause);
   return (1);
 }
 
-void	destroy_win(t_screen *win)
+static void	destroy_win(t_screen *win)
 {
   delwin(win->game);
+  delwin(win->next);
   delwin(win->score);
 }
 
+static void	my_refresh(t_screen *win, t_setup *setup)
+{
+  time_t	my_time;
+
+  my_time = time(NULL) - setup->start_time;
+  mvwprintw(win->score, 2, 2, "High Score\t%d", setup->high_score);
+  mvwprintw(win->score, 3, 2, "Score\t\t%d", setup->score);
+  mvwprintw(win->score, 5, 2, "Lines\t\t%02d", setup->line);
+  mvwprintw(win->score, 6, 2, "Level\t\t%02d", setup->level);
+  mvwprintw(win->score, 8, 2, "Timer:\t%02d:%02d", my_time / 60, my_time % 60);
+  refresh();
+  wrefresh(win->game);
+  wrefresh(win->next);
+  wrefresh(win->score);
+}
 static WINDOW	*create_newwin(int width, int height, int startx, int starty)
 {
   WINDOW	*local_win;
@@ -54,18 +70,19 @@ void		aff_screen(t_list *tetrimino, t_setup *setup)
   t_screen	win;
 
   (void)tetrimino;
-  (void)win;
+  if (init_score(setup))
+    return ;
   initscr();
   cbreak();
   keypad(stdscr, TRUE);
-  printw("Press ESC to exit");
+  mvprintw(1, 5, "Press Q to exit");
   refresh();
-  win.game = create_newwin(GWIDTH, GHEIGHT, STARTX, STARTY + 5);
-  win.score = create_newwin(10, 20, STARTX - 30, STARTY);
-  wprintw(win.score, "High Score 100");
-  refresh();
+  win.game = create_newwin(GWIDTH, GHEIGHT, STARTX, STARTY);
+  win.next = create_newwin(GWIDTH - 2, GHEIGHT / 5, STARTX * 1.5, STARTY / 1);
+  win.score = create_newwin(GWIDTH * 2, GHEIGHT / 2, STARTX / 8, STARTY * 10);
+  my_refresh(&win, setup);
   while (get_input(setup))
-    refresh();
-  //destroy_win(&win);
+    my_refresh(&win, setup);
+  destroy_win(&win);
   endwin();
 }

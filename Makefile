@@ -5,7 +5,7 @@
 ## Login   <zeng_d@epitech.net>
 ##
 ## Started on  Mon Oct 12 13:31:18 2015 David Zeng
-## Last update Tue Mar  8 19:50:10 2016 David Zeng
+## Last update Mon Mar 14 18:58:41 2016 Jean PLANCHER
 ##
 
 SRC	= main.c \
@@ -29,6 +29,7 @@ SRC	= main.c \
 	  list/my_free_list.c \
 	  list/my_show_list.c \
 	  screen/aff_screen.c \
+		screen/init_score.c
 
 NAME	= tetris
 

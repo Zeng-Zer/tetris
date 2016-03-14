@@ -11,6 +11,9 @@
 #ifndef MY_FONCTION_H_
 # define MY_FONCTION_H_
 
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 # include <ncurses/curses.h>
 # include <term.h>
 # include <sys/ioctl.h>
@@ -18,6 +21,7 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <time.h>
 # include "my_list.h"
 # include "my.h"
 
@@ -51,6 +55,7 @@ int			my_get_mino_shape(t_mino *mino, char *str);
 /* PARSING */
 typedef struct		s_setup
 {
+  int			line;
   int			level;
   char			left[SIZE_READ];
   char			right[SIZE_READ];
@@ -62,6 +67,9 @@ typedef struct		s_setup
   int			height;
   int			next;
   int			debug;
+  int			high_score;
+  int			score;
+  time_t		start_time;
 }			t_setup;
 
 typedef struct		s_ref
