@@ -5,7 +5,7 @@
 ** Login   <planch_j@epitech.net>
 **
 ** Started on  Tue Mar  8 16:26:29 2016 Jean PLANCHER
-** Last update Mon Mar 14 22:15:50 2016 Jean PLANCHER
+** Last update Mon Mar 14 23:09:12 2016 Jean PLANCHER
 */
 
 #ifndef SCREEN_H_
@@ -27,5 +27,6 @@ typedef struct	s_screen
 }		t_screen;
 
 int	init_score(t_setup *setup);
+void	write_hs(int score);
 
 #endif /* !SCREEN_H_ */

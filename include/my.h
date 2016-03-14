@@ -33,7 +33,7 @@ int	my_strcmp(char *s1, char *s2);
 int	my_strncmp(char *s1, char *s2, int nb);
 char	*my_strcat(char *dest, char *src);
 char	*my_strncat(char *dest, char *src, int nb);
-int	my_putnbr_base(int nbr, char *base);
+void	my_putnbr_base(char *str, int nb, int n);
 char	*my_strdup(char *src);
 void	my_show_tab(char **tabi);
 void	my_free_tab(char **tabi);

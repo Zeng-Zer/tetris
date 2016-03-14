@@ -5,7 +5,7 @@
 ** Login   <planch_j@epitech.net>
 **
 ** Started on  Tue Mar  8 16:08:40 2016 Jean PLANCHER
-** Last update Mon Mar 14 22:43:58 2016 Jean PLANCHER
+** Last update Mon Mar 14 23:26:21 2016 Jean PLANCHER
 */
 
 #include "screen.h"
@@ -45,6 +45,8 @@ static void	my_refresh(t_screen *win, t_setup *setup)
 
   my_time = time(NULL) - setup->start_time;
   refresh();
+  if (init_score(setup))
+    return ;
   mvwprintw(win->score, 2, 2, "High Score\t%d", setup->high_score);
   mvwprintw(win->score, 3, 2, "Score\t\t%d", setup->score);
   mvwprintw(win->score, 5, 2, "Lines\t\t%02d", setup->line);
@@ -53,7 +55,9 @@ static void	my_refresh(t_screen *win, t_setup *setup)
   wrefresh(win->game);
   wrefresh(win->next);
   wrefresh(win->score);
+  setup->score += 10;
 }
+
 static WINDOW	*create_newwin(int width, int height, int startx, int starty)
 {
   WINDOW	*local_win;
@@ -84,5 +88,7 @@ void		aff_screen(t_list *tetrimino, t_setup *setup)
   while (get_input(setup))
     my_refresh(&win, setup);
   destroy_win(&win);
+  if (setup->high_score < setup->score)
+    write_hs(setup->score);
   endwin();
 }
