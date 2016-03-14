@@ -5,7 +5,7 @@
 ** Login   <planch_j@epitech.net>
 **
 ** Started on  Tue Mar  8 16:08:40 2016 Jean PLANCHER
-** Last update Mon Mar 14 22:20:01 2016 Jean PLANCHER
+** Last update Mon Mar 14 22:43:58 2016 Jean PLANCHER
 */
 
 #include "screen.h"
@@ -44,12 +44,12 @@ static void	my_refresh(t_screen *win, t_setup *setup)
   time_t	my_time;
 
   my_time = time(NULL) - setup->start_time;
+  refresh();
   mvwprintw(win->score, 2, 2, "High Score\t%d", setup->high_score);
   mvwprintw(win->score, 3, 2, "Score\t\t%d", setup->score);
   mvwprintw(win->score, 5, 2, "Lines\t\t%02d", setup->line);
   mvwprintw(win->score, 6, 2, "Level\t\t%02d", setup->level);
   mvwprintw(win->score, 8, 2, "Timer:\t%02d:%02d", my_time / 60, my_time % 60);
-  refresh();
   wrefresh(win->game);
   wrefresh(win->next);
   wrefresh(win->score);
@@ -78,8 +78,8 @@ void		aff_screen(t_list *tetrimino, t_setup *setup)
   mvprintw(1, 5, "Press Q to exit");
   refresh();
   win.game = create_newwin(GWIDTH, GHEIGHT, STARTX, STARTY);
-  win.next = create_newwin(GWIDTH - 2, GHEIGHT / 5, STARTX * 1.5, STARTY / 1);
-  win.score = create_newwin(GWIDTH * 2, GHEIGHT / 2, STARTX / 8, STARTY * 10);
+  win.next = create_newwin(GWIDTH - 2, GHEIGHT / 5, STARTX * 2, STARTY);
+  win.score = create_newwin(GWIDTH * 2, GHEIGHT / 2, STARTX / 6, STARTY + 10);
   my_refresh(&win, setup);
   while (get_input(setup))
     my_refresh(&win, setup);
