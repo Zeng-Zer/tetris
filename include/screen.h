@@ -5,7 +5,7 @@
 ** Login   <planch_j@epitech.net>
 **
 ** Started on  Tue Mar  8 16:26:29 2016 Jean PLANCHER
-** Last update Tue Mar 15 14:43:43 2016 Jean PLANCHER
+** Last update Tue Mar 15 16:04:57 2016 Jean PLANCHER
 */
 
 #ifndef SCREEN_H_
@@ -16,6 +16,10 @@
 # define BORDER_GAME '|', '|', '-', '-', '/', '\\', '\\', '/'
 # define GHEIGHT (setup->height + 2)
 # define GWIDTH (setup->width + 2)
+# define SHEIGHT 11
+# define SWIDTH 25
+# define NHEIGHT 4
+# define NWIDTH 10
 # define STARTX ((COLS - setup->width) / 2)
 # define STARTY ((LINES - setup->height) / 2)
 
