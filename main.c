@@ -5,7 +5,7 @@
 ** Login   <David@epitech.net>
 **
 ** Started on  Tue Mar  8 18:03:47 2016 David Zeng
-** Last update Tue Mar 15 20:53:43 2016 David Zeng
+** Last update Tue Mar 15 23:40:23 2016 Jean PLANCHER
 */
 
 #include "my_fonction.h"
@@ -51,6 +51,13 @@ int		main(int argc, char **argv, char **env)
     my_aff_debug(setup, tetrimino);
   my_init_term(NULL, 1);
   my_remove_error_mino(tetrimino);
+  if (tetrimino->length == 0)
+    {
+      my_put_err("No tetriminos available.\n");
+      free(setup);
+      my_free_all(&tetrimino, &my_free_node_data);
+      return (1);
+    }
   aff_screen(tetrimino, setup);
   free(setup);
   my_free_all(&tetrimino, &my_free_node_data);

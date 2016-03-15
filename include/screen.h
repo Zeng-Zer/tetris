@@ -5,7 +5,7 @@
 ** Login   <planch_j@epitech.net>
 **
 ** Started on  Tue Mar  8 16:26:29 2016 Jean PLANCHER
-** Last update Tue Mar 15 16:04:57 2016 Jean PLANCHER
+** Last update Wed Mar 16 00:00:31 2016 Jean PLANCHER
 */
 
 #ifndef SCREEN_H_
@@ -18,8 +18,8 @@
 # define GWIDTH (setup->width + 2)
 # define SHEIGHT 11
 # define SWIDTH 25
-# define NHEIGHT 4
-# define NWIDTH 10
+# define NHEIGHT (tetrimino->max_h > 2) ? tetrimino->max_h : 2
+# define NWIDTH (tetrimino->max_w > 6) ? tetrimino->max_w : 6
 # define STARTX ((COLS - setup->width) / 2)
 # define STARTY ((LINES - setup->height) / 2)
 
@@ -32,5 +32,6 @@ typedef struct	s_screen
 
 int	init_score(t_setup *setup);
 void	write_hs(int score);
+void	aff_next(WINDOW *next, t_setup *setup, t_list *tetriminos);
 
 #endif /* !SCREEN_H_ */

@@ -5,7 +5,7 @@
 ** Login   <planch_j@epitech.net>
 **
 ** Started on  Tue Mar  8 16:08:40 2016 Jean PLANCHER
-** Last update Tue Mar 15 20:11:46 2016 Jean PLANCHER
+** Last update Wed Mar 16 00:02:56 2016 Jean PLANCHER
 */
 
 #include "screen.h"
@@ -33,7 +33,8 @@ static int	get_input(t_setup *setup)
     mvprintw(LINES - 1, COLS - 20, "pause : [%s]   ", setup->pause);
   else if (!my_strcmp(touch, "e"))
     setup->score += 10;
-
+  else if (!my_strcmp(touch, "n"))
+    setup->aff_next = 0;
   return (1);
 }
 
@@ -54,18 +55,18 @@ static void	destroy_win(t_screen *win)
   delwin(win->score);
 }
 
-static void	my_refresh(t_screen *win, t_setup *setup)
+static void	my_refresh(t_screen *win, t_setup *setup, t_list *tetrimino)
 {
   time_t	my_time;
 
   my_time = time(NULL) - setup->start_time;
   win->game = create_newwin(GWIDTH, GHEIGHT, STARTX, STARTY);
-  win->next = create_newwin(NWIDTH, NHEIGHT, STARTX * 1.7, STARTY);
+  win->next = create_newwin(NWIDTH + 2, NHEIGHT + 2, STARTX * 1.7, STARTY);
   win->score = create_newwin(SWIDTH, SHEIGHT, STARTX * 0.1, STARTY * 2);
   erase();
   refresh();
-  mvwprintw(win->next, 1, 1, "%d", STARTX);
-  mvwprintw(win->next, 2, 1, "%d", STARTY);
+  mvwprintw(win->next, 0, 1, "%s", "Next");
+  aff_next(win->next, setup, tetrimino);
   mvwprintw(win->score, 2, 2, "High Score\t%d", setup->high_score);
   mvwprintw(win->score, 3, 2, "Score\t\t%d", setup->score);
   mvwprintw(win->score, 5, 2, "Lines\t\t%02d", setup->line);
@@ -83,7 +84,7 @@ void		aff_screen(t_list *tetrimino, t_setup *setup)
   SCREEN	*screen;
   t_screen	win;
 
-  (void)tetrimino;
+  setup->aff_next = 0;
   screen = newterm(NULL, stderr, stdin);
   set_term(screen);
   cbreak();
@@ -95,7 +96,7 @@ void		aff_screen(t_list *tetrimino, t_setup *setup)
   if (init_score(setup))
     return ;
   while (get_input(setup))
-    my_refresh(&win, setup);
+    my_refresh(&win, setup, tetrimino);
   destroy_win(&win);
   if (setup->high_score < setup->score)
     write_hs(setup->score);

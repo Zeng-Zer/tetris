@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Tue Oct 20 15:38:09 2015 David Zeng
-** Last update Tue Mar 15 20:48:17 2016 David Zeng
+** Last update Wed Mar 16 00:01:58 2016 Jean PLANCHER
 */
 
 #ifndef MY_LIST_H_

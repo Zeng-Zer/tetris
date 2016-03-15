@@ -66,6 +66,7 @@ typedef struct		s_setup
   int			width;
   int			height;
   int			next;
+  int			aff_next;
   int			debug;
   int			high_score;
   int			score;
