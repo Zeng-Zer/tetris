@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Tue Oct 20 15:38:09 2015 David Zeng
-** Last update Wed Mar  2 01:33:43 2016 David Zeng
+** Last update Tue Mar 15 20:30:47 2016 Jean PLANCHER
 */
 
 #ifndef MY_LIST_H_
@@ -20,6 +20,8 @@ typedef struct	s_node
 
 typedef struct s_list
 {
+  int		max_h;
+  int		max_w;
   int		length;
   struct s_node	*fin;
   struct s_node	*debut;
