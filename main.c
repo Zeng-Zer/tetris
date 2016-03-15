@@ -2,10 +2,10 @@
 ** main.c for tetris in /home/zeng_d/rendu/Unix/PSU_2015_tetris
 **
 ** Made by David Zeng
-** Login   <David@epitech.net>
+** Login   <zeng_d@epitech.net>
 **
 ** Started on  Tue Mar  8 18:03:47 2016 David Zeng
-** Last update Tue Mar 15 23:40:23 2016 Jean PLANCHER
+** Last update Wed Mar 16 00:32:31 2016 David Zeng
 */
 
 #include "my_fonction.h"

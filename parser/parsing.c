@@ -5,7 +5,7 @@
 ** Login   <David@epitech.net>
 **
 ** Started on  Tue Mar  8 18:05:15 2016 David Zeng
-** Last update Sun Mar 13 22:17:12 2016 David Zeng
+** Last update Wed Mar 16 00:31:13 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -112,7 +112,7 @@ t_setup		*my_get_setup(int ac, char **av, char **env)
 	  free(new);
 	  return (NULL);
 	}
-      else if (my_strcmp(av[i], "-W") == 0 ||
+      else if (my_strcmp(av[i], "-w") == 0 ||
 	       my_strcmp(av[i], "--without-next") == 0)
 	new->next = false;
       else if (my_strcmp(av[i], "-d") == 0 || my_strcmp(av[i], "--debug") == 0)
