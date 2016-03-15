@@ -5,7 +5,7 @@
 ** Login   <David@epitech.net>
 **
 ** Started on  Tue Mar  8 18:03:47 2016 David Zeng
-** Last update Tue Mar 15 15:48:55 2016 Jean PLANCHER
+** Last update Tue Mar 15 20:53:43 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -33,6 +33,7 @@ void		my_remove_error_mino(t_list *tetrimino)
 	  my_del_node(tetrimino, tmp);
 	}
     }
+  my_mino_max_length(tetrimino);
 }
 
 int		main(int argc, char **argv, char **env)

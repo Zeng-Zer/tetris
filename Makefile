@@ -5,7 +5,7 @@
 ## Login   <zeng_d@epitech.net>
 ##
 ## Started on  Mon Oct 12 13:31:18 2015 David Zeng
-## Last update Mon Mar 14 18:58:41 2016 Jean PLANCHER
+## Last update Tue Mar 15 20:53:17 2016 David Zeng
 ##
 
 SRC	= main.c \
@@ -13,6 +13,7 @@ SRC	= main.c \
 	  get_tetrimino/my_pos_add.c \
 	  get_tetrimino/my_sort_add.c \
 	  get_tetrimino/my_get_mino_shape.c \
+	  get_tetrimino/my_mino_max_length.c \
 	  misc/my_aff_help.c \
 	  misc/my_aff_debug.c \
 	  misc/my_aff_tetrimino.c \
@@ -29,7 +30,7 @@ SRC	= main.c \
 	  list/my_free_list.c \
 	  list/my_show_list.c \
 	  screen/aff_screen.c \
-		screen/init_score.c
+	  screen/init_score.c \
 
 NAME	= tetris
 

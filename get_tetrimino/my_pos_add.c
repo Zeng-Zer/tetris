@@ -5,12 +5,10 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Tue Nov 17 14:37:05 2015 David Zeng
-** Last update Tue Mar  1 21:45:44 2016 David Zeng
+** Last update Tue Mar 15 20:50:14 2016 David Zeng
 */
 
-#include "my.h"
-#include "my_list.h"
-#include <stdlib.h>
+#include "my_fonction.h"
 
 int		my_do_pos(t_list *list, void *data, t_node *tmp)
 {

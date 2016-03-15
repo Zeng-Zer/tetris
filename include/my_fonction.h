@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Mon Nov 30 15:49:28 2015 David Zeng
-** Last update Tue Mar 15 17:39:00 2016 
+** Last update Tue Mar 15 20:52:39 2016 David Zeng
 */
 
 #ifndef MY_FONCTION_H_
@@ -84,6 +84,7 @@ char			*my_get_param(int argc, char **argv, char *ref);
 char			*my_get_long_param(int argc, char **argv, char *ref);
 int			my_get_keyboard(int argc, char **argv, t_setup *new);
 char			*my_get_env(char **env, char *elem);
+void			my_mino_max_length(t_list *list);
 /* PARSING END */
 
 /* OTHER */
