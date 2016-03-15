@@ -5,7 +5,7 @@
 ** Login   <planch_j@epitech.net>
 **
 ** Started on  Tue Mar  8 16:26:29 2016 Jean PLANCHER
-** Last update Mon Mar 14 23:09:12 2016 Jean PLANCHER
+** Last update Tue Mar 15 14:43:43 2016 Jean PLANCHER
 */
 
 #ifndef SCREEN_H_
@@ -16,8 +16,8 @@
 # define BORDER_GAME '|', '|', '-', '-', '/', '\\', '\\', '/'
 # define GHEIGHT (setup->height + 2)
 # define GWIDTH (setup->width + 2)
-# define STARTX ((COLS - GWIDTH) / 2)
-# define STARTY ((LINES - GHEIGHT) / 2)
+# define STARTX ((COLS - setup->width) / 2)
+# define STARTY ((LINES - setup->height) / 2)
 
 typedef struct	s_screen
 {

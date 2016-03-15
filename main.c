@@ -5,7 +5,7 @@
 ** Login   <David@epitech.net>
 **
 ** Started on  Tue Mar  8 18:03:47 2016 David Zeng
-** Last update Mon Mar 14 17:55:24 2016 Jean PLANCHER
+** Last update Tue Mar 15 15:48:55 2016 Jean PLANCHER
 */
 
 #include "my_fonction.h"
@@ -42,7 +42,10 @@ int		main(int argc, char **argv, char **env)
 
   if ((setup = my_get_setup(argc, argv, env)) == NULL ||
       (tetrimino = my_get_tetrimino()) == NULL)
-    return (1);
+    {
+      my_init_term(NULL, 1);
+      return (1);
+    }
   if (setup->debug == true)
     my_aff_debug(setup, tetrimino);
   my_init_term(NULL, 1);
