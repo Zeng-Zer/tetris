@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Tue Oct 20 15:46:26 2015 David Zeng
-** Last update Mon Dec 14 15:54:21 2015 David Zeng
+** Last update Tue Mar 15 20:39:40 2016 David Zeng
 */
 
 #include <unistd.h>
@@ -22,5 +22,7 @@ t_list		*my_declare_list()
   list->length = 0;
   list->debut = NULL;
   list->fin = NULL;
+  list->max_h = 0;
+  list->max_w = 0;
   return (list);
 }

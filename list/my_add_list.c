@@ -5,11 +5,18 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Thu Oct 22 15:31:42 2015 David Zeng
-** Last update Mon Dec 14 15:53:07 2015 David Zeng
+** Last update Tue Mar 15 20:39:19 2016 David Zeng
 */
 
-#include <stdlib.h>
-#include "my_list.h"
+#include "my_fonction.h"
+
+static void	my_add_mino_length(t_list *list, t_mino *mino)
+{
+  if (mino->height > list->max_h)
+    list->max_h = mino->height;
+  if (mino->width > list->max_w)
+    list->max_w = mino->width;
+}
 
 int             my_add_list(t_list *list, void *data)
 {
@@ -27,5 +34,6 @@ int             my_add_list(t_list *list, void *data)
     list->debut = node;
   list->fin = node;
   list->length = list->length + 1;
+  my_add_mino_length(list, data);
   return (0);
 }
