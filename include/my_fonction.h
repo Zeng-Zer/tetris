@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Mon Nov 30 15:49:28 2015 David Zeng
-** Last update Wed Mar  9 00:12:01 2016 David Zeng
+** Last update Tue Mar 15 17:39:00 2016 
 */
 
 #ifndef MY_FONCTION_H_
@@ -91,6 +91,7 @@ void			my_free_node_data(t_mino *mino);
 void			my_aff_help(char *str);
 void			my_aff_tetrimino(t_list *tetrimino);
 void			my_aff_debug(t_setup *setup, t_list *tetrimino);
+void			ch_read_state(int mode);
 /* OTHER END */
 
 /* SCREEN */

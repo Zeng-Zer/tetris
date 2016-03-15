@@ -5,7 +5,7 @@
 ** Login   <David@epitech.net>
 **
 ** Started on  Tue Mar  8 18:28:33 2016 David Zeng
-** Last update Wed Mar  9 01:30:00 2016 David Zeng
+** Last update Tue Mar 15 17:38:34 2016 
 */
 
 #include "my_fonction.h"
@@ -34,4 +34,21 @@ int			my_init_term(char **env, int mode)
   else if (mode == 1)
     ioctl(0, TCSETS, &old);
   return (0);
+}
+
+void			ch_read_state(int mode)
+{
+  static struct termios	new;
+  static struct termios	old;
+
+  if (mode == 0)
+    {
+      ioctl(0, TCGETS, &new);
+      ioctl(0, TCGETS, &old);
+      new.c_cc[VMIN] = 0;
+      new.c_cc[VTIME] = 1;
+      ioctl(0, TCSETS, &new);
+    }
+  else if (mode == 1)
+    ioctl(0, TCSETS, &old);
 }
