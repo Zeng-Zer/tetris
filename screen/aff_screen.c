@@ -5,7 +5,7 @@
 ** Login   <planch_j@epitech.net>
 **
 ** Started on  Tue Mar  8 16:08:40 2016 Jean PLANCHER
-** Last update Tue Mar 15 19:15:57 2016 Jean PLANCHER
+** Last update Tue Mar 15 20:11:46 2016 Jean PLANCHER
 */
 
 #include "screen.h"
@@ -80,10 +80,12 @@ static void	my_refresh(t_screen *win, t_setup *setup)
 
 void		aff_screen(t_list *tetrimino, t_setup *setup)
 {
+  SCREEN	*screen;
   t_screen	win;
 
   (void)tetrimino;
-  initscr();
+  screen = newterm(NULL, stderr, stdin);
+  set_term(screen);
   cbreak();
   keypad(stdscr, TRUE);
   raw();
@@ -99,4 +101,5 @@ void		aff_screen(t_list *tetrimino, t_setup *setup)
     write_hs(setup->score);
   ch_read_state(1);
   endwin();
+  delscreen(screen);
 }
