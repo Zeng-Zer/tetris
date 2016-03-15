@@ -5,7 +5,7 @@
 ** Login   <planch_j@epitech.net>
 **
 ** Started on  Tue Mar  8 16:26:29 2016 Jean PLANCHER
-** Last update Wed Mar 16 00:00:31 2016 Jean PLANCHER
+** Last update Wed Mar 16 00:12:45 2016 Jean PLANCHER
 */
 
 #ifndef SCREEN_H_
@@ -20,8 +20,8 @@
 # define SWIDTH 25
 # define NHEIGHT (tetrimino->max_h > 2) ? tetrimino->max_h : 2
 # define NWIDTH (tetrimino->max_w > 6) ? tetrimino->max_w : 6
-# define STARTX ((COLS - setup->width) / 2)
-# define STARTY ((LINES - setup->height) / 2)
+# define STARTX ((COLS - setup->width) >> 1)
+# define STARTY ((LINES - setup->height) >> 1)
 
 typedef struct	s_screen
 {

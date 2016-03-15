@@ -5,16 +5,30 @@
 ** Login   <planch_j@epitech.net>
 **
 ** Started on  Tue Mar 15 23:23:59 2016 Jean PLANCHER
-** Last update Wed Mar 16 00:07:33 2016 Jean PLANCHER
+** Last update Wed Mar 16 00:28:49 2016 Jean PLANCHER
 */
 
 #include "my_fonction.h"
 
-void	aff_next(WINDOW *next, t_setup *setup, t_list *tetriminos)
+void		aff_next(WINDOW *next, t_setup *setup, t_list *tetriminos)
 {
+  t_mino	*mino;
+  t_node	*elem;
+  int		i;
+
+  elem = tetriminos->debut;
   srand(time(NULL));
   if (setup->aff_next == 0)
     setup->aff_next = rand() % tetriminos->length + 1;
   if (setup->next == true)
-    mvwprintw(next, 1, 1, "%d", setup->aff_next);
+    {
+      i &= ~i;
+      while (++i < setup->aff_next)
+	elem = elem->next;
+      mino = (t_mino *)elem->data;
+      i = -1;
+      while (mino->shape[++i])
+	mvwprintw(next, i / mino->width + 1, i % mino->width+ 1,
+		  "%c", mino->shape[i]);
+    }
 }

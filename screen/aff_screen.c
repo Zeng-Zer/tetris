@@ -5,7 +5,7 @@
 ** Login   <planch_j@epitech.net>
 **
 ** Started on  Tue Mar  8 16:08:40 2016 Jean PLANCHER
-** Last update Wed Mar 16 00:02:56 2016 Jean PLANCHER
+** Last update Wed Mar 16 00:12:18 2016 Jean PLANCHER
 */
 
 #include "screen.h"
@@ -62,7 +62,7 @@ static void	my_refresh(t_screen *win, t_setup *setup, t_list *tetrimino)
   my_time = time(NULL) - setup->start_time;
   win->game = create_newwin(GWIDTH, GHEIGHT, STARTX, STARTY);
   win->next = create_newwin(NWIDTH + 2, NHEIGHT + 2, STARTX * 1.7, STARTY);
-  win->score = create_newwin(SWIDTH, SHEIGHT, STARTX * 0.1, STARTY * 2);
+  win->score = create_newwin(SWIDTH, SHEIGHT, STARTX * 0.1, STARTY << 1);
   erase();
   refresh();
   mvwprintw(win->next, 0, 1, "%s", "Next");
