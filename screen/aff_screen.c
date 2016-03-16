@@ -5,7 +5,7 @@
 ** Login   <planch_j@epitech.net>
 **
 ** Started on  Tue Mar  8 16:08:40 2016 Jean PLANCHER
-** Last update Wed Mar 16 16:32:13 2016 Jean PLANCHER
+** Last update Wed Mar 16 16:40:38 2016 Jean PLANCHER
 */
 
 #include "screen.h"
@@ -94,9 +94,9 @@ void		aff_screen(t_list *tetrimino, t_setup *setup)
   raw();
   noecho();
   curs_set(0);
-  ch_read_state(0);
   if (init_score(setup) || my_init_color())
     return ;
+  ch_read_state(0);
   while ((i = get_input(setup)) > 0)
     my_refresh(&win, setup, tetrimino);
   destroy_win(&win);

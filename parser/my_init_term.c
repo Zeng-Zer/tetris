@@ -5,7 +5,7 @@
 ** Login   <David@epitech.net>
 **
 ** Started on  Tue Mar  8 18:28:33 2016 David Zeng
-** Last update Tue Mar 15 17:38:34 2016 
+** Last update Wed Mar 16 16:38:51 2016 Jean PLANCHER
 */
 
 #include "my_fonction.h"
@@ -36,9 +36,9 @@ int			my_init_term(char **env, int mode)
   return (0);
 }
 
-void			ch_read_state(int mode)
+void		ch_read_state(int mode)
 {
-  static struct termios	new;
+  static struct	termios	new;
   static struct termios	old;
 
   if (mode == 0)
