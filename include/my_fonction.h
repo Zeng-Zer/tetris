@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Mon Nov 30 15:49:28 2015 David Zeng
-** Last update Tue Mar 15 20:52:39 2016 David Zeng
+** Last update Wed Mar 16 01:57:31 2016 David Zeng
 */
 
 #ifndef MY_FONCTION_H_
@@ -86,11 +86,12 @@ char			*my_get_long_param(int argc, char **argv, char *ref);
 int			my_get_keyboard(int argc, char **argv, t_setup *new);
 char			*my_get_env(char **env, char *elem);
 void			my_mino_max_length(t_list *list);
+int			my_parse_error(int argc, char **argv, t_setup *new);
 /* PARSING END */
 
 /* OTHER */
 void			my_free_node_data(t_mino *mino);
-void			my_aff_help(char *str);
+int			my_aff_help(char *str);
 void			my_aff_tetrimino(t_list *tetrimino);
 void			my_aff_debug(t_setup *setup, t_list *tetrimino);
 void			ch_read_state(int mode);

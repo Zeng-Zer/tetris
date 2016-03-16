@@ -5,7 +5,7 @@
 ** Login   <David@epitech.net>
 **
 ** Started on  Tue Mar  8 18:05:15 2016 David Zeng
-** Last update Wed Mar 16 00:31:13 2016 David Zeng
+** Last update Wed Mar 16 02:17:03 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -61,9 +61,15 @@ int		my_get_map_size(int argc, char **argv, t_setup *new)
       debut = i;
       while ((tmp[++debut] == ' ') && tmp[debut] != 0);
       if ((new->height = my_getnbr_err(tmp)) == -1 || new->height == 0)
-	new->height = 20;
+	{
+	  free(tmp);
+	  return (my_aff_help(argv[0]));
+	}
       if ((new->width = my_getnbr_err(&tmp[debut])) == -1 || new->width == 0)
-	new->width = 10;
+	{
+	  free(tmp);
+	  return (my_aff_help(argv[0]));
+	}
       free(tmp);
     }
  return (0);
@@ -76,21 +82,24 @@ int		my_get_other_setup(int argc, char **argv, t_setup *new)
   if ((tmp = my_get_param(argc, argv, "-l")) != NULL)
     {
       if ((new->level = my_getnbr_err(tmp)) == -1 || new->level == 0)
-	new->level = 1;
-      if (new->level > 10)
-	new->level = 10;
+	{
+	  free(tmp);
+	  return (my_aff_help(argv[0]));
+	}
       free(tmp);
     }
   else if ((tmp = my_get_long_param(argc, argv, "--level=")) != NULL)
     {
       if ((new->level = my_getnbr_err(tmp)) == -1 || new->level == 0)
-	new->level = 1;
-      if (new->level > 10)
-	new->level = 10;
+	{
+	  free(tmp);
+	  return (my_aff_help(argv[0]));
+	}
       free(tmp);
     }
   my_get_keyboard(argc, argv, new);
-  my_get_map_size(argc, argv, new);
+  if (my_get_map_size(argc, argv, new) == 1)
+    return (1);
   return (0);
 }
 
@@ -101,8 +110,10 @@ t_setup		*my_get_setup(int ac, char **av, char **env)
 
   if ((new = my_init_setup(env)) == NULL)
     return (NULL);
-  if (av == NULL)
+  if (ac == 1)
     return (new);
+  if (my_parse_error(ac, av, new) == 1)
+    return (NULL);
   i = -1;
   while (++i < ac)
     {
@@ -118,7 +129,5 @@ t_setup		*my_get_setup(int ac, char **av, char **env)
       else if (my_strcmp(av[i], "-d") == 0 || my_strcmp(av[i], "--debug") == 0)
 	new->debug = true;
     }
-  if (my_get_other_setup(ac, av, new) == 1)
-    return (NULL);
-  return (new);
+  return ((my_get_other_setup(ac, av, new) == 1) ? NULL : new);
 }

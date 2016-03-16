@@ -5,16 +5,16 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Tue Mar  1 01:53:26 2016 David Zeng
-** Last update Fri Mar  4 23:18:46 2016 David Zeng
+** Last update Wed Mar 16 02:44:00 2016 David Zeng
 */
 
-#include "my_fonction.h"
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <dirent.h>
 #include <unistd.h>
 #include <stdio.h>
+#include "my_fonction.h"
 
 int		my_get_mino_name(char *str, int opt, t_mino *mino)
 {

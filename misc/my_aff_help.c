@@ -5,15 +5,12 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Tue Mar  1 22:19:24 2016 David Zeng
-** Last update Wed Mar 16 00:27:44 2016 David Zeng
+** Last update Wed Mar 16 01:33:09 2016 David Zeng
 */
 
 #include "my_fonction.h"
-#include <sys/types.h>
-#include <fcntl.h>
-#include <unistd.h>
 
-void		my_aff_help(char *str)
+int		my_aff_help(char *str)
 {
   my_printf("Usage: %s [options]\n", str);
   my_printf("Options:\n");
@@ -28,4 +25,5 @@ void		my_aff_help(char *str)
   my_printf("  --map-size={row,col}\t Set game size at row, col\n");
   my_printf("  -w --without-next\t Hide next tetrimino\n");
   my_printf("  -d --debug\t\t Debug mode\n");
+  return (1);
 }

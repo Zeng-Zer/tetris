@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Wed Mar  2 21:58:28 2016 David Zeng
-** Last update Fri Mar  4 17:23:47 2016 David Zeng
+** Last update Wed Mar 16 02:17:21 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -42,7 +42,10 @@ char		*my_get_param(int argc, char **argv, char *ref)
 	  if (argv[i + 1] != NULL)
 	    return (my_strdup(argv[i + 1]));
 	  else
-	    return (NULL);
+	    {
+	      my_aff_help(argv[0]);
+	      exit(1);
+	    }
 	}
       i = i + 1;
     }

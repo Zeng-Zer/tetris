@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Tue Nov  3 14:04:04 2015 David Zeng
-** Last update Mon Dec 14 15:53:47 2015 David Zeng
+** Last update Wed Mar 16 02:30:10 2016 David Zeng
 */
 
 #include <stdlib.h>
@@ -22,12 +22,14 @@ int		my_del_node(t_list *list, t_node *node)
   if (tmp->next == NULL)
     {
       list->fin = tmp->prev;
+      if (tmp->prev != NULL)
       tmp->prev->next = NULL;
     }
   if (tmp->prev == NULL)
     {
       list->debut = tmp->next;
-      tmp->next->prev = NULL;
+      if (tmp->next != NULL)
+	tmp->next->prev = NULL;
     }
   if (tmp->prev != NULL && tmp->next != NULL)
     {
