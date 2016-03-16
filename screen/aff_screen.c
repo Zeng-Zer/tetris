@@ -5,7 +5,7 @@
 ** Login   <planch_j@epitech.net>
 **
 ** Started on  Tue Mar  8 16:08:40 2016 Jean PLANCHER
-** Last update Wed Mar 16 00:12:18 2016 Jean PLANCHER
+** Last update Wed Mar 16 02:24:23 2016 Jean PLANCHER
 */
 
 #include "screen.h"
@@ -15,8 +15,8 @@ static int	get_input(t_setup *setup)
   char	touch[SIZE_READ];
   int	ret;
 
-  if (STARTX < 27 || STARTY < 3)
-    return (0);
+  if (STARTX < 26 || STARTY < 2)
+      return (-1);
   ret = read(0, touch, SIZE_READ);
   touch[ret] = 0;
   if (!my_strcmp(touch, setup->quit))
@@ -75,7 +75,8 @@ static void	my_refresh(t_screen *win, t_setup *setup, t_list *tetrimino)
   wrefresh(win->game);
   wrefresh(win->next);
   wrefresh(win->score);
-  usleep(100000);
+  usleep(100000 - setup->level * 10000);
+  setup->score += 1;
   destroy_win(win);
 }
 
@@ -83,6 +84,7 @@ void		aff_screen(t_list *tetrimino, t_setup *setup)
 {
   SCREEN	*screen;
   t_screen	win;
+  int		i;
 
   setup->aff_next = 0;
   screen = newterm(NULL, stderr, stdin);
@@ -95,7 +97,7 @@ void		aff_screen(t_list *tetrimino, t_setup *setup)
   ch_read_state(0);
   if (init_score(setup))
     return ;
-  while (get_input(setup))
+  while ((i = get_input(setup)) > 0)
     my_refresh(&win, setup, tetrimino);
   destroy_win(&win);
   if (setup->high_score < setup->score)
@@ -103,4 +105,6 @@ void		aff_screen(t_list *tetrimino, t_setup *setup)
   ch_read_state(1);
   endwin();
   delscreen(screen);
+  if (i == -1)
+    my_printf("Error: window's too small.\n");
 }
