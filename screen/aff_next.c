@@ -5,7 +5,7 @@
 ** Login   <planch_j@epitech.net>
 **
 ** Started on  Tue Mar 15 23:23:59 2016 Jean PLANCHER
-** Last update Wed Mar 16 00:46:47 2016 Jean PLANCHER
+** Last update Wed Mar 16 16:32:30 2016 Jean PLANCHER
 */
 
 #include "my_fonction.h"
@@ -26,8 +26,12 @@ void		aff_next(WINDOW *next, t_setup *setup, t_list *tetriminos)
 	elem = elem->next;
       mino = (t_mino *)elem->data;
       i = -1;
+      wattron(next, COLOR_PAIR((mino->color < 8 && mino->color > 0)
+			       ? mino->color : 0));
       while (mino->shape[++i])
 	mvwprintw(next, i / mino->width + 1, i % mino->width + 1,
 		  "%c", mino->shape[i]);
+	wattroff(next, COLOR_PAIR((mino->color < 8 && mino->color > 0)
+				  ? mino->color : 0));
     }
 }
