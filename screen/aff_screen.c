@@ -5,7 +5,7 @@
 ** Login   <planch_j@epitech.net>
 **
 ** Started on  Tue Mar  8 16:08:40 2016 Jean PLANCHER
-** Last update Wed Mar 16 22:42:26 2016 Jean PLANCHER
+** Last update Thu Mar 17 15:19:04 2016 Jean PLANCHER
 */
 
 #include "screen.h"
@@ -66,9 +66,8 @@ static void	my_refresh(t_screen *win, t_setup *setup, t_list *tetrimino)
   refresh();
   erase();
   mvwprintw(win->next, 0, 1, "%s", "Next");
-  aff_game(win->game, setup, setup);
-  if (setup->aff_next == 0)
-    aff_next(win->next, setup, tetrimino);
+  aff_game(win->game, setup, tetrimino);
+  aff_next(win->next, setup, tetrimino);
   mvwprintw(win->score, 2, 2, "High Score\t%d", setup->high_score);
   mvwprintw(win->score, 3, 2, "Score\t\t%d", setup->score);
   mvwprintw(win->score, 5, 2, "Lines\t\t%02d", setup->line);
