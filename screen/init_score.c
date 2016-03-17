@@ -5,16 +5,38 @@
 ** Login   <planch_j@epitech.net>
 **
 ** Started on  Mon Mar 14 18:55:31 2016 Jean PLANCHER
-** Last update Wed Mar 16 16:33:11 2016 Jean PLANCHER
+** Last update Thu Mar 17 16:33:28 2016 Jean PLANCHER
 */
 
 #include "screen.h"
 
-int	init_score(t_setup *setup)
+static void	init_screen(t_setup *setup, t_screen *win)
+{
+  int	x;
+  int	y;
+
+  if ((win->screen = malloc(sizeof(t_pix *) * setup->height)) == NULL)
+    return ;
+  y = -1;
+  while (++y < setup->height)
+    {
+      if ((win->screen[y] = malloc(sizeof(t_pix) * setup->width)) == NULL)
+	return ;
+      x = -1;
+      while (++x < setup->width)
+	{
+	  win->screen[y][x].pix = '*';
+	  win->screen[y][x].color = 2;
+	}
+    }
+}
+
+int	init_score(t_setup *setup, t_screen *win)
 {
   int	fd;
 
   setup->start_time = time(NULL);
+  init_screen(setup, win);
   if ((fd = open(".high_score", O_RDONLY)) == -1)
     {
       if ((fd = open(".high_score", O_CREAT, 0644)) == -1)
@@ -36,14 +58,14 @@ int	init_score(t_setup *setup)
 int	my_init_color()
 {
   start_color();
-  init_pair(0, COLOR_BLACK, COLOR_BLACK);
-  init_pair(1, COLOR_RED, COLOR_BLACK);
-  init_pair(2, COLOR_GREEN, COLOR_BLACK);
-  init_pair(3, COLOR_YELLOW, COLOR_BLACK);
-  init_pair(4, COLOR_BLUE, COLOR_BLACK);
-  init_pair(5, COLOR_MAGENTA, COLOR_BLACK);
-  init_pair(6, COLOR_CYAN, COLOR_BLACK);
-  init_pair(7, COLOR_WHITE, COLOR_BLACK);
+  init_pair(0, COLOR_WHITE, COLOR_BLACK);
+  init_pair(1, COLOR_WHITE, COLOR_RED);
+  init_pair(2, COLOR_WHITE, COLOR_GREEN);
+  init_pair(3, COLOR_WHITE, COLOR_YELLOW);
+  init_pair(4, COLOR_WHITE, COLOR_BLUE);
+  init_pair(5, COLOR_WHITE, COLOR_MAGENTA);
+  init_pair(6, COLOR_WHITE, COLOR_CYAN);
+  init_pair(7, COLOR_WHITE, COLOR_WHITE);
   return (0);
 }
 

@@ -5,7 +5,7 @@
 ** Login   <planch_j@epitech.net>
 **
 ** Started on  Tue Mar  8 16:08:40 2016 Jean PLANCHER
-** Last update Thu Mar 17 15:19:04 2016 Jean PLANCHER
+** Last update Thu Mar 17 16:45:45 2016 Jean PLANCHER
 */
 
 #include "screen.h"
@@ -61,22 +61,23 @@ static void	my_refresh(t_screen *win, t_setup *setup, t_list *tetrimino)
 
   my_time = time(NULL) - setup->start_time;
   win->game = create_newwin(GWIDTH, GHEIGHT, STARTX, STARTY);
-  win->next = create_newwin(NWIDTH + 2, NHEIGHT + 2, STARTX * 1.7, STARTY);
+  win->next = create_newwin(NWIDTH + 2, NHEIGHT + 2, STARTX * 1.9, STARTY);
   win->score = create_newwin(SWIDTH, SHEIGHT, STARTX * 0.1, STARTY << 1);
   refresh();
   erase();
   mvwprintw(win->next, 0, 1, "%s", "Next");
-  aff_game(win->game, setup, tetrimino);
+  aff_game(win, setup);
+  wrefresh(win->game);
   aff_next(win->next, setup, tetrimino);
   mvwprintw(win->score, 2, 2, "High Score\t%d", setup->high_score);
   mvwprintw(win->score, 3, 2, "Score\t\t%d", setup->score);
   mvwprintw(win->score, 5, 2, "Lines\t\t%02d", setup->line);
   mvwprintw(win->score, 6, 2, "Level\t\t%02d", setup->level);
   mvwprintw(win->score, 8, 2, "Timer:\t%02d:%02d", my_time / 60, my_time % 60);
-  wrefresh(win->game);
+  mvprintw(LINES - 2, COLS - 35, "made with love by zeng_d & planch_j");
   wrefresh(win->next);
   wrefresh(win->score);
-  usleep(100000 - setup->level * 10000);
+  usleep(100000 - (setup->level - 1) * 10000);
   setup->score += 1;
   destroy_win(win);
 }
@@ -95,7 +96,7 @@ void		aff_screen(t_list *tetrimino, t_setup *setup)
   raw();
   noecho();
   curs_set(0);
-  if (init_score(setup) || my_init_color())
+  if (init_score(setup, &win) || my_init_color())
     return ;
   ch_read_state(0);
   while ((i = get_input(setup)) > 0)
