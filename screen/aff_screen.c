@@ -5,12 +5,12 @@
 ** Login   <planch_j@epitech.net>
 **
 ** Started on  Tue Mar  8 16:08:40 2016 Jean PLANCHER
-** Last update Thu Mar 17 16:45:45 2016 Jean PLANCHER
+** Last update Fri Mar 18 01:40:01 2016 Jean PLANCHER
 */
 
 #include "screen.h"
 
-static int	get_input(t_setup *setup)
+static int	get_input(t_setup *setup, t_screen *win)
 {
   char	touch[SIZE_READ];
   int	ret;
@@ -22,19 +22,17 @@ static int	get_input(t_setup *setup)
   if (!my_strcmp(touch, setup->quit))
     return (0);
   else if (!my_strcmp(touch, setup->left))
-    mvprintw(LINES - 1, COLS - 20, "left : [%s]   ", setup->left);
+    move_actual(win, 'l');
   else if (!my_strcmp(touch, setup->right))
-    mvprintw(LINES - 1, COLS - 20, "right : [%s]   ", setup->right);
+    move_actual(win, 'r');
   else if (!my_strcmp(touch, setup->turn))
-    mvprintw(LINES - 1, COLS - 20, "turn : [%s]   ", setup->turn);
+    mvprintw(LINES - 1, 0, "turn : [%s]   ", setup->turn);
   else if (!my_strcmp(touch, setup->drop))
-    mvprintw(LINES - 1, COLS - 20, "drop : [%s]   ", setup->drop);
+    mvprintw(LINES - 1, 0, "drop : [%s]   ", setup->drop);
   else if (!my_strcmp(touch, setup->pause))
     my_pause(setup);
-  else if (!my_strcmp(touch, "e"))
-    setup->score += 10;
   else if (!my_strcmp(touch, "n"))
-    setup->aff_next = 0;
+    setup->new_tet = 0;
   return (1);
 }
 
@@ -67,14 +65,15 @@ static void	my_refresh(t_screen *win, t_setup *setup, t_list *tetrimino)
   erase();
   mvwprintw(win->next, 0, 1, "%s", "Next");
   aff_game(win, setup);
+  mvprintw(LINES - 2, 0, "made with love by zeng_d & planch_j");
+  aff_next(win, setup, tetrimino);
+  aff_tetrimino(win);
   wrefresh(win->game);
-  aff_next(win->next, setup, tetrimino);
   mvwprintw(win->score, 2, 2, "High Score\t%d", setup->high_score);
   mvwprintw(win->score, 3, 2, "Score\t\t%d", setup->score);
   mvwprintw(win->score, 5, 2, "Lines\t\t%02d", setup->line);
   mvwprintw(win->score, 6, 2, "Level\t\t%02d", setup->level);
   mvwprintw(win->score, 8, 2, "Timer:\t%02d:%02d", my_time / 60, my_time % 60);
-  mvprintw(LINES - 2, COLS - 35, "made with love by zeng_d & planch_j");
   wrefresh(win->next);
   wrefresh(win->score);
   usleep(100000 - (setup->level - 1) * 10000);
@@ -88,7 +87,7 @@ void		aff_screen(t_list *tetrimino, t_setup *setup)
   t_screen	win;
   int		i;
 
-  setup->aff_next = 0;
+  setup->aff_next = rand() % tetrimino->length + 1;
   screen = newterm(NULL, stderr, stdin);
   set_term(screen);
   cbreak();
@@ -99,7 +98,7 @@ void		aff_screen(t_list *tetrimino, t_setup *setup)
   if (init_score(setup, &win) || my_init_color())
     return ;
   ch_read_state(0);
-  while ((i = get_input(setup)) > 0)
+  while ((i = get_input(setup, &win)) > 0)
     my_refresh(&win, setup, tetrimino);
   destroy_win(&win);
   if (setup->high_score < setup->score)

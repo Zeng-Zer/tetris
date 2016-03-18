@@ -5,7 +5,7 @@
 ** Login   <planch_j@epitech.net>
 **
 ** Started on  Tue Mar  8 16:26:29 2016 Jean PLANCHER
-** Last update Thu Mar 17 16:22:22 2016 Jean PLANCHER
+** Last update Fri Mar 18 01:41:32 2016 Jean PLANCHER
 */
 
 #ifndef SCREEN_H_
@@ -15,7 +15,7 @@
 
 # define BORDER_GAME '|', '|', '-', '-', '/', '\\', '\\', '/'
 # define GHEIGHT (setup->height + 2)
-# define GWIDTH ((setup->width + 2) << 1)
+# define GWIDTH ((setup->width << 1) + 2)
 # define SHEIGHT 11
 # define SWIDTH 25
 # define NHEIGHT ((tetrimino->max_h > 2) ? tetrimino->max_h : 2)
@@ -35,13 +35,18 @@ typedef struct	s_screen
   WINDOW	*next;
   WINDOW	*score;
   t_pix		**screen;
+  t_mino	*actual;
+  int		x;
+  int		y;
 }		t_screen;
 
 int	init_score(t_setup *setup, t_screen *win);
 void	write_hs(int score);
-void	aff_next(WINDOW *next, t_setup *setup, t_list *tetriminos);
+void	aff_next(t_screen *win, t_setup *setup, t_list *tetriminos);
 void	aff_game(t_screen *win, t_setup *setup);
 void	my_pause(t_setup *setup);
-int	my_init_color();
+int	my_init_color(void);
+void	aff_tetrimino(t_screen *win);
+void	move_actual(t_screen *win, char key);
 
 #endif /* !SCREEN_H_ */

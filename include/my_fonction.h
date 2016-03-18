@@ -70,6 +70,7 @@ typedef struct		s_setup
   int			debug;
   int			high_score;
   int			score;
+  int			new_tet;
   time_t		start_time;
 }			t_setup;
 

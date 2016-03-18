@@ -5,7 +5,7 @@
 ** Login   <planch_j@epitech.net>
 **
 ** Started on  Mon Mar 14 18:55:31 2016 Jean PLANCHER
-** Last update Thu Mar 17 16:33:28 2016 Jean PLANCHER
+** Last update Fri Mar 18 00:38:46 2016 Jean PLANCHER
 */
 
 #include "screen.h"
@@ -24,17 +24,17 @@ static void	init_screen(t_setup *setup, t_screen *win)
 	return ;
       x = -1;
       while (++x < setup->width)
-	{
-	  win->screen[y][x].pix = '*';
-	  win->screen[y][x].color = 2;
-	}
+	win->screen[y][x].pix = '*';
+      win->screen[y][x].pix = 0;
     }
+  win->screen[y] = 0;
 }
 
 int	init_score(t_setup *setup, t_screen *win)
 {
   int	fd;
 
+  setup->new_tet = 0;
   setup->start_time = time(NULL);
   init_screen(setup, win);
   if ((fd = open(".high_score", O_RDONLY)) == -1)
@@ -55,7 +55,7 @@ int	init_score(t_setup *setup, t_screen *win)
   return (0);
 }
 
-int	my_init_color()
+int	my_init_color(void)
 {
   start_color();
   init_pair(0, COLOR_WHITE, COLOR_BLACK);
