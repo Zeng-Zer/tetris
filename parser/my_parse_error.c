@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Wed Mar 16 00:42:13 2016 David Zeng
-** Last update Thu Mar 17 15:19:18 2016 
+** Last update Thu Mar 17 15:24:41 2016 
 */
 
 #include "my_fonction.h"
@@ -54,7 +54,6 @@ int		my_parse_error(int argc, char **argv, t_setup *new)
       else
 	{
 	  free(new);
-	  my_init_term(NULL, 1);
 	  return (my_aff_help(argv[0]));
 	}
     }

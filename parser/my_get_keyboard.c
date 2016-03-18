@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Fri Mar  4 17:59:59 2016 David Zeng
-** Last update Wed Mar  9 01:54:36 2016 David Zeng
+** Last update Fri Mar 18 02:09:09 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -18,11 +18,21 @@ int		my_get_key_with_ref(int argc, char **argv, t_ref *ref, char *k)
     {
       my_strcpy(k, tmp);
       free(tmp);
+      if (k[0] == 0)
+	{
+	  my_aff_help(argv[0]);
+	  exit(1);
+	}
     }
   else if ((tmp = my_get_long_param(argc, argv, ref->ref2)) != NULL)
     {
       my_strcpy(k, tmp);
       free(tmp);
+      if (k[0] == 0)
+	{
+	  my_aff_help(argv[0]);
+	  exit(1);
+	}
     }
   return (0);
 }
