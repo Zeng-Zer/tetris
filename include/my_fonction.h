@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Mon Nov 30 15:49:28 2015 David Zeng
-** Last update Wed Mar 16 01:57:31 2016 David Zeng
+** Last update Fri Mar 18 15:50:17 2016 David Zeng
 */
 
 #ifndef MY_FONCTION_H_
@@ -50,6 +50,7 @@ t_list			*my_get_tetrimino();
 int			my_pos_add(t_list *list, void *data, int position);
 void			my_sort_add(t_list *list, void *data);
 int			my_get_mino_shape(t_mino *mino, char *str);
+int			my_void_file(char *str, t_mino *mino);
 /* GET TETRIMINOS END */
 
 /* PARSING */

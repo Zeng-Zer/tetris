@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Tue Mar  1 01:53:26 2016 David Zeng
-** Last update Wed Mar 16 02:44:00 2016 David Zeng
+** Last update Fri Mar 18 15:51:35 2016 David Zeng
 */
 
 #include <sys/types.h>
@@ -78,7 +78,7 @@ int		my_check_mino_error(t_mino *mino, int i, int debut, int j)
 
   if (my_strcpy(path, "tetriminos/") && my_strcat(path, mino->name) &&
       ((fd = open(path, O_RDONLY)) == -1 || (tmp = get_next_line(fd)) == NULL))
-    return (-1);
+    return (my_void_file(tmp, mino));
   length = my_strlen(tmp) + 1;
   while (++i < length)
     {
