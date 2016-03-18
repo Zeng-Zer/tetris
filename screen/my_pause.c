@@ -5,7 +5,7 @@
 ** Login   <planch_j@epitech.net>
 **
 ** Started on  Wed Mar 16 02:32:07 2016 Jean PLANCHER
-** Last update Wed Mar 16 03:00:17 2016 Jean PLANCHER
+** Last update Fri Mar 18 15:41:10 2016 Jean PLANCHER
 */
 
 #include "my_fonction.h"
@@ -28,4 +28,11 @@ void		my_pause(t_setup *setup)
   my_time = time(NULL) - my_time;
   setup->start_time += my_time;
   ch_read_state(0);
+}
+
+void	my_erase(t_setup *setup)
+{
+  erase();
+  setup->wcol = COLS;
+  setup->wline = LINES;
 }

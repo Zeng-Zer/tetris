@@ -72,6 +72,8 @@ typedef struct		s_setup
   int			high_score;
   int			score;
   int			new_tet;
+  int			wline;
+  int			wcol;
   time_t		start_time;
 }			t_setup;
 

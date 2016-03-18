@@ -5,7 +5,7 @@
 ** Login   <planch_j@epitech.net>
 **
 ** Started on  Tue Mar  8 16:26:29 2016 Jean PLANCHER
-** Last update Fri Mar 18 01:41:32 2016 Jean PLANCHER
+** Last update Fri Mar 18 16:18:36 2016 Jean PLANCHER
 */
 
 #ifndef SCREEN_H_
@@ -46,7 +46,9 @@ void	aff_next(t_screen *win, t_setup *setup, t_list *tetriminos);
 void	aff_game(t_screen *win, t_setup *setup);
 void	my_pause(t_setup *setup);
 int	my_init_color(void);
-void	aff_tetrimino(t_screen *win);
-void	move_actual(t_screen *win, char key);
+void	aff_tetrimino(t_screen *win, t_setup *setup);
+void	move_actual(t_screen *win, t_setup *setup, char key);
+void	my_erase(t_setup *setup);
+void	my_blit(t_screen *win);
 
 #endif /* !SCREEN_H_ */

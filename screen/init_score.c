@@ -5,7 +5,7 @@
 ** Login   <planch_j@epitech.net>
 **
 ** Started on  Mon Mar 14 18:55:31 2016 Jean PLANCHER
-** Last update Fri Mar 18 00:38:46 2016 Jean PLANCHER
+** Last update Fri Mar 18 16:23:06 2016 Jean PLANCHER
 */
 
 #include "screen.h"
@@ -15,16 +15,18 @@ static void	init_screen(t_setup *setup, t_screen *win)
   int	x;
   int	y;
 
-  if ((win->screen = malloc(sizeof(t_pix *) * setup->height)) == NULL)
+  setup->wline = LINES;
+  setup->wcol = COLS;
+  if ((win->screen = malloc(sizeof(t_pix *) * (setup->height + 2))) == NULL)
     return ;
   y = -1;
-  while (++y < setup->height)
+  while (++y < setup->height + 2)
     {
       if ((win->screen[y] = malloc(sizeof(t_pix) * setup->width)) == NULL)
 	return ;
       x = -1;
       while (++x < setup->width)
-	win->screen[y][x].pix = '*';
+	win->screen[y][x].pix = ' ';
       win->screen[y][x].pix = 0;
     }
   win->screen[y] = 0;

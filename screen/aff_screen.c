@@ -5,7 +5,7 @@
 ** Login   <planch_j@epitech.net>
 **
 ** Started on  Tue Mar  8 16:08:40 2016 Jean PLANCHER
-** Last update Fri Mar 18 01:40:01 2016 Jean PLANCHER
+** Last update Fri Mar 18 17:15:39 2016 Jean PLANCHER
 */
 
 #include "screen.h"
@@ -22,9 +22,9 @@ static int	get_input(t_setup *setup, t_screen *win)
   if (!my_strcmp(touch, setup->quit))
     return (0);
   else if (!my_strcmp(touch, setup->left))
-    move_actual(win, 'l');
+    move_actual(win, setup, 'l');
   else if (!my_strcmp(touch, setup->right))
-    move_actual(win, 'r');
+    move_actual(win, setup, 'r');
   else if (!my_strcmp(touch, setup->turn))
     mvprintw(LINES - 1, 0, "turn : [%s]   ", setup->turn);
   else if (!my_strcmp(touch, setup->drop))
@@ -42,7 +42,9 @@ static WINDOW	*create_newwin(int width, int height, int startx, int starty)
 
   local_win = newwin(height, width, starty, startx);
   box(local_win, 0 , 0);
+  wattron(local_win, COLOR_PAIR(0));
   wborder(local_win, BORDER_GAME);
+  wattron(local_win, COLOR_PAIR(0));
   return (local_win);
 }
 
@@ -62,12 +64,13 @@ static void	my_refresh(t_screen *win, t_setup *setup, t_list *tetrimino)
   win->next = create_newwin(NWIDTH + 2, NHEIGHT + 2, STARTX * 1.9, STARTY);
   win->score = create_newwin(SWIDTH, SHEIGHT, STARTX * 0.1, STARTY << 1);
   refresh();
-  erase();
+  if (LINES != setup-> wline || COLS != setup->wcol)
+    my_erase(setup);
   mvwprintw(win->next, 0, 1, "%s", "Next");
   aff_game(win, setup);
   mvprintw(LINES - 2, 0, "made with love by zeng_d & planch_j");
   aff_next(win, setup, tetrimino);
-  aff_tetrimino(win);
+  aff_tetrimino(win, setup);
   wrefresh(win->game);
   mvwprintw(win->score, 2, 2, "High Score\t%d", setup->high_score);
   mvwprintw(win->score, 3, 2, "Score\t\t%d", setup->score);
