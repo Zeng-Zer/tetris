@@ -5,7 +5,7 @@
 ** Login   <planch_j@epitech.net>
 **
 ** Started on  Wed Mar 16 22:42:38 2016 Jean PLANCHER
-** Last update Fri Mar 18 17:16:50 2016 Jean PLANCHER
+** Last update Sat Mar 19 00:15:20 2016 Jean PLANCHER
 */
 
 #include "screen.h"
@@ -13,21 +13,17 @@
 static int	my_move(t_screen *win, t_setup *setup)
 {
   int	i;
-  int	j;
 
   if (win->x < 0 || win->x + win->actual->width > setup->width ||
-      win->y + win->actual->height >= setup->height)
+      win->y + win->actual->height > setup->height)
     return (1);
   i = -1;
-  while (++i < win->y)
+  while (win->actual->shape[++i])
     {
-      j = -1;
-      while (++j < win->x)
-	{
-	  if (win->actual->shape[i * win->actual->width + j] == '*'
-	      && win->screen[win->y + i][win->x + j].pix == '*')
-	    return (1);
-	}
+      if (win->actual->shape[i] == '*' &&
+	  win->screen[win->y + i / win->actual->width]
+	  [win->x + i % win->actual->width].pix == '*')
+	return (1);
     }
   return (0);
 }
@@ -46,6 +42,20 @@ void	move_actual(t_screen *win, t_setup *setup, char key)
       if (my_move(win, setup))
 	win->x++;
     }
+}
+
+void	my_drop(t_screen *win, t_setup *setup)
+{
+  int	k;
+
+  k = 0;
+  while (!my_move(win, setup))
+    {
+      win->y++;
+      k++;
+    }
+  setup->score += k * 100;
+  win->y--;
 }
 
 void	aff_game(t_screen *win, t_setup *setup)
@@ -81,10 +91,10 @@ void	aff_tetrimino(t_screen *win, t_setup *setup)
   win->y++;
   if (my_move(win, setup))
     {
-      win->y--;
       setup->new_tet = 0;
       my_blit(win);
-      win->y++;
+      if (check_all_line(win, setup))
+	setup->score += 100;
     }
   color = (win->actual->color < 8 && win->actual->color > 0)
       ? win->actual->color : 0;

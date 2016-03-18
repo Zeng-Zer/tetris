@@ -5,7 +5,7 @@
 ** Login   <planch_j@epitech.net>
 **
 ** Started on  Tue Mar  8 16:26:29 2016 Jean PLANCHER
-** Last update Fri Mar 18 16:18:36 2016 Jean PLANCHER
+** Last update Sat Mar 19 00:02:21 2016 Jean PLANCHER
 */
 
 #ifndef SCREEN_H_
@@ -50,5 +50,7 @@ void	aff_tetrimino(t_screen *win, t_setup *setup);
 void	move_actual(t_screen *win, t_setup *setup, char key);
 void	my_erase(t_setup *setup);
 void	my_blit(t_screen *win);
+int	check_all_line(t_screen *win, t_setup *setup);
+void	my_drop(t_screen *win, t_setup *setup);
 
 #endif /* !SCREEN_H_ */

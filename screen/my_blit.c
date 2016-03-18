@@ -5,16 +5,49 @@
 ** Login   <planch_j@epitech.net>
 **
 ** Started on  Fri Mar 18 16:15:01 2016 Jean PLANCHER
-** Last update Fri Mar 18 17:12:59 2016 Jean PLANCHER
+** Last update Sat Mar 19 00:12:07 2016 Jean PLANCHER
 */
 
 #include "screen.h"
+
+static int	my_check_line(t_pix *line)
+{
+  int		i;
+
+  i = -1;
+  while (line[++i].pix)
+    {
+      if (line[i].pix == ' ')
+	return (1);
+    }
+  return (0);
+}
+
+int	check_all_line(t_screen *win, t_setup *setup)
+{
+  int	i;
+  int	e;
+
+  i = -1;
+  e = 0;
+  while (win->screen[++i])
+    if (!my_check_line(win->screen[i]))
+	{
+	  while (--i >= 0)
+	    win->screen[i + 1] = win->screen[i];
+	  while (++i < setup->width)
+	    win->screen[0][i].pix = ' ';
+	  e = 1;
+	}
+  return (e);
+}
 
 void	my_blit(t_screen *win)
 {
   int	i;
 
   i = -1;
+  win->y--;
   while (win->actual->shape[++i])
     if (win->actual->shape[i] == '*')
 	{
@@ -23,4 +56,5 @@ void	my_blit(t_screen *win)
 	  win->screen[win->y + i / win->actual->width]
 	  [win->x + i % win->actual->width].color = win->actual->color;
 	}
+  win->y++;
 }
