@@ -5,26 +5,28 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Fri Mar 18 14:44:45 2016 David Zeng
-** Last update Fri Mar 18 15:23:28 2016 David Zeng
+** Last update Sat Mar 19 01:41:11 2016 Jean PLANCHER
 */
 
 #include "my_fonction.h"
 
-void		rotate_tetrimino(t_mino *mino)
+t_mino		*rotate_tetrimino(t_mino *actual)
 {
+  t_mino	*new;
   int		x;
   int		y;
 
-  x = 0;
-  y = 0;
-  while (y < mino->height)
+  y = -1;
+  if ((new = malloc(sizeof(t_mino) * actual->width * actual->height)) == NULL)
+    return (NULL);
+  while (++y < actual->height)
     {
-      while (x < mino->width)
-	{
-
-	  x = x + 1;
-	}
-      x = 0;
-      y = y + 1;
+      x = -1;
+      while (++x < actual->width)
+	new->shape[x * actual->width + y] = actual->shape[(actual->height - y) * actual->height + actual->width - x];
     }
+  new->color = actual->color;
+  new->width = actual->height;
+  new->height = actual->width;
+  return (new);
 }

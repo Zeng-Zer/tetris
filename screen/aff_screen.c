@@ -5,7 +5,7 @@
 ** Login   <planch_j@epitech.net>
 **
 ** Started on  Tue Mar  8 16:08:40 2016 Jean PLANCHER
-** Last update Sat Mar 19 00:01:50 2016 Jean PLANCHER
+** Last update Sat Mar 19 01:18:21 2016 Jean PLANCHER
 */
 
 #include "screen.h"
@@ -26,7 +26,7 @@ static int	get_input(t_setup *setup, t_screen *win)
   else if (!my_strcmp(touch, setup->right))
     move_actual(win, setup, 'r');
   else if (!my_strcmp(touch, setup->turn))
-    mvprintw(LINES - 1, 0, "turn : [%s]   ", setup->turn);
+    win->actual = rotate_tetrimino(win->actual);
   else if (!my_strcmp(touch, setup->drop))
     my_drop(win, setup);
   else if (!my_strcmp(touch, setup->pause))
