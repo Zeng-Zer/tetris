@@ -5,7 +5,7 @@
 ** Login   <planch_j@epitech.net>
 **
 ** Started on  Tue Mar  8 16:08:40 2016 Jean PLANCHER
-** Last update Mon Mar 21 21:39:53 2016 Jean PLANCHER
+** Last update Mon Mar 21 22:20:15 2016 Jean PLANCHER
 */
 
 #include "screen.h"
@@ -17,8 +17,8 @@ static int	get_input(t_setup *setup, t_screen *win)
   if (STARTX < 26 || STARTY < 2)
       return (-1);
   touch[read(0, touch, SIZE_READ)] = 0;
-  if (!my_strcmp(touch, setup->quit))
-    return (0);
+  if (!my_strcmp(touch, setup->quit) || win->is_ended)
+    return (-win->is_ended * 2);
   else if (!my_strcmp(touch, setup->left))
     move_actual(win, setup, 'l');
   else if (!my_strcmp(touch, setup->right))
@@ -111,6 +111,6 @@ void		aff_screen(t_list *tetrimino, t_setup *setup)
   ch_read_state(1);
   endwin();
   delscreen(screen);
-  if (i == -1)
-    my_printf("Error: window's too small.\n");
+  if (i < 0)
+    my_end(i);
 }

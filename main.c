@@ -5,10 +5,18 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Tue Mar  8 18:03:47 2016 David Zeng
-** Last update Thu Mar 17 15:24:29 2016 Jean PLANCHER
+** Last update Mon Mar 21 22:21:27 2016 Jean PLANCHER
 */
 
 #include "my_fonction.h"
+
+void	my_end(int i)
+{
+  if (i == -1)
+    my_printf("Error: window's too small.\n");
+  if (i == -2)
+    my_printf("Haha you just lost.\n");
+}
 
 void		my_free_node_data(t_mino *mino)
 {

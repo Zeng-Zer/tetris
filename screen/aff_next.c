@@ -5,7 +5,7 @@
 ** Login   <planch_j@epitech.net>
 **
 ** Started on  Tue Mar 15 23:23:59 2016 Jean PLANCHER
-** Last update Fri Mar 18 01:47:18 2016 Jean PLANCHER
+** Last update Mon Mar 21 22:17:14 2016 Jean PLANCHER
 */
 
 #include "screen.h"
@@ -44,16 +44,16 @@ void		aff_next(t_screen *win, t_setup *setup, t_list *tetriminos)
 {
   t_mino	*mino;
   t_node	*elem;
-  int		i;
   int		color;
+  int		i;
 
   elem = tetriminos->debut;
   if (setup->new_tet == 0)
     win->actual = copie_tetrimino(tetriminos, setup, win);
-  if (setup->next == true)
+  win->is_ended = (my_move(win, setup)) ? 1 : 0;
+  if (setup->next == true && (i = 1))
     {
-      i &= ~i;
-      while (++i < setup->aff_next)
+      while (i++ < setup->aff_next)
 	elem = elem->next;
       mino = (t_mino *)elem->data;
       i = -1;

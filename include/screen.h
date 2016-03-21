@@ -5,7 +5,7 @@
 ** Login   <planch_j@epitech.net>
 **
 ** Started on  Tue Mar  8 16:26:29 2016 Jean PLANCHER
-** Last update Mon Mar 21 21:51:22 2016 Jean PLANCHER
+** Last update Mon Mar 21 22:21:00 2016 Jean PLANCHER
 */
 
 #ifndef SCREEN_H_
@@ -38,6 +38,7 @@ typedef struct	s_screen
   t_mino	*actual;
   int		x;
   int		y;
+  int		is_ended;
 }		t_screen;
 
 int	init_score(t_setup *setup, t_screen *win);
@@ -55,5 +56,6 @@ void	my_drop(t_screen *win, t_setup *setup);
 t_mino	*rotate_tetrimino_l(t_mino *actual);
 t_mino	*rotate_tetrimino_r(t_mino *actual);
 int	my_move(t_screen *win, t_setup *setup);
+void	my_end(int i);
 
 #endif /* !SCREEN_H_ */

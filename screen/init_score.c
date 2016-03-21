@@ -5,7 +5,7 @@
 ** Login   <planch_j@epitech.net>
 **
 ** Started on  Mon Mar 14 18:55:31 2016 Jean PLANCHER
-** Last update Fri Mar 18 16:23:06 2016 Jean PLANCHER
+** Last update Mon Mar 21 22:17:35 2016 Jean PLANCHER
 */
 
 #include "screen.h"
@@ -38,6 +38,7 @@ int	init_score(t_setup *setup, t_screen *win)
 
   setup->new_tet = 0;
   setup->start_time = time(NULL);
+  win->is_ended = 0;
   init_screen(setup, win);
   if ((fd = open(".high_score", O_RDONLY)) == -1)
     {
