@@ -5,7 +5,7 @@
 ** Login   <planch_j@epitech.net>
 **
 ** Started on  Tue Mar  8 16:08:40 2016 Jean PLANCHER
-** Last update Mon Mar 21 19:48:10 2016 Jean PLANCHER
+** Last update Mon Mar 21 21:39:53 2016 Jean PLANCHER
 */
 
 #include "screen.h"
@@ -13,12 +13,10 @@
 static int	get_input(t_setup *setup, t_screen *win)
 {
   char	touch[SIZE_READ];
-  int	ret;
 
   if (STARTX < 26 || STARTY < 2)
       return (-1);
-  ret = read(0, touch, SIZE_READ);
-  touch[ret] = 0;
+  touch[read(0, touch, SIZE_READ)] = 0;
   if (!my_strcmp(touch, setup->quit))
     return (0);
   else if (!my_strcmp(touch, setup->left))
@@ -26,7 +24,11 @@ static int	get_input(t_setup *setup, t_screen *win)
   else if (!my_strcmp(touch, setup->right))
     move_actual(win, setup, 'r');
   else if (!my_strcmp(touch, setup->turn))
-    win->actual = rotate_tetrimino(win->actual);
+    {
+      win->actual = rotate_tetrimino_r(win->actual);
+      if (my_move(win, setup))
+	win->actual = rotate_tetrimino_l(win->actual);
+    }
   else if (!my_strcmp(touch, setup->drop))
     my_drop(win, setup);
   else if (!my_strcmp(touch, setup->pause))

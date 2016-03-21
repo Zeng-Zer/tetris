@@ -5,12 +5,12 @@
 ** Login   <planch_j@epitech.net>
 **
 ** Started on  Wed Mar 16 22:42:38 2016 Jean PLANCHER
-** Last update Sat Mar 19 11:40:08 2016 Jean PLANCHER
+** Last update Mon Mar 21 21:37:26 2016 Jean PLANCHER
 */
 
 #include "screen.h"
 
-static int	my_move(t_screen *win, t_setup *setup)
+int	my_move(t_screen *win, t_setup *setup)
 {
   int	i;
 

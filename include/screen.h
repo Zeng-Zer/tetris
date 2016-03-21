@@ -5,7 +5,7 @@
 ** Login   <planch_j@epitech.net>
 **
 ** Started on  Tue Mar  8 16:26:29 2016 Jean PLANCHER
-** Last update Sat Mar 19 01:19:21 2016 Jean PLANCHER
+** Last update Mon Mar 21 21:51:22 2016 Jean PLANCHER
 */
 
 #ifndef SCREEN_H_
@@ -19,7 +19,7 @@
 # define SHEIGHT 11
 # define SWIDTH 25
 # define NHEIGHT ((tetrimino->max_h > 2) ? tetrimino->max_h : 2)
-# define NWIDTH ((tetrimino->max_w * 2 > 6) ? tetrimino->max_w * 2 : 6)
+# define NWIDTH ((tetrimino->max_w * 2 > 6) ? tetrimino->max_w << 1 : 6)
 # define STARTX ((COLS - setup->width) >> 1)
 # define STARTY ((LINES - setup->height) >> 1)
 
@@ -52,6 +52,8 @@ void	my_erase(t_setup *setup);
 void	my_blit(t_screen *win);
 int	check_all_line(t_screen *win, t_setup *setup);
 void	my_drop(t_screen *win, t_setup *setup);
-t_mino	*rotate_tetrimino(t_mino *actual);
+t_mino	*rotate_tetrimino_l(t_mino *actual);
+t_mino	*rotate_tetrimino_r(t_mino *actual);
+int	my_move(t_screen *win, t_setup *setup);
 
 #endif /* !SCREEN_H_ */
