@@ -5,7 +5,7 @@
 ** Login   <planch_j@epitech.net>
 **
 ** Started on  Fri Mar 18 16:15:01 2016 Jean PLANCHER
-** Last update Sat Mar 19 00:12:07 2016 Jean PLANCHER
+** Last update Tue Mar 22 14:00:55 2016 Jean PLANCHER
 */
 
 #include "screen.h"
@@ -38,6 +38,12 @@ int	check_all_line(t_screen *win, t_setup *setup)
 	  while (++i < setup->width)
 	    win->screen[0][i].pix = ' ';
 	  e = 1;
+	  setup->line++;
+	  if (setup->line == 10)
+	    {
+	      setup->line = 0;
+	      setup->level += (setup->level < 10);
+	    }
 	}
   return (e);
 }
